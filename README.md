@@ -71,6 +71,8 @@ Fluxo da solução (dado de entrada → ação → sistema → quem decide → n
 
 Comando:
 
+Diagrama ER da ontologia: `python scripts/gerar_er.py` (setup em `scripts/README.md`).
+
 Dado de exemplo: `data/amostra-sintetica.csv` (cabeçalho apenas). Casos de eval: `src/evals/casos.jsonl` (vazio).
 
 ## 7. Falhas conhecidas e limites
