@@ -102,7 +102,7 @@ Quem opera depois deste projeto:
 
 | Entrega | Arquivo | Dono |
 | --- | --- | --- |
-| 1 · Ontologia | `docs/01-ontologia.md` | |
+| 1 · Ontologia | `docs/ontologia/01-ontologia.md` | |
 | 2 · Contrato de sucesso | `docs/02-contrato-de-sucesso.md` | |
 | 3 · Evals | `src/evals/casos.jsonl` | |
 | 4 · Painel de evals | `docs/04-painel-de-evals.md` | |
