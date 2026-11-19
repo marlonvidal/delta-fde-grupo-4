@@ -1,0 +1,1258 @@
+id: https://w3id.org/amparo-seguros/ontologia/core
+name: amparo_core
+title: 'Amparo Seguros — Ontologia (Entrega 1: diagnóstico de dados)'
+version: 0.3.0
+description: 'Entrega 1. Fonte: seção 5 do case (relatório de diagnóstico de dados no formato CRISP-DM, organizado
+  nos cinco blocos). Descreve o que existe e o que falta. Não escolhe solução.
+
+
+  Segue o modelo da Ontologia do Palantir Foundry (object types, links, interfaces, action types do processo atual).
+  Cada object type tem as annotations bloco_diagnostico e origem_modelagem (DIAGNOSTICO = citado na seção 5; INFERIDO
+  = necessário ao modelo, mas não confirmado no diagnóstico).'
+license: CC-BY-4.0
+default_prefix: amparo
+default_range: string
+prefixes:
+  amparo: https://w3id.org/amparo-seguros/ontologia/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  xsd: http://www.w3.org/2001/XMLSchema#
+imports:
+- linkml:types
+annotations:
+  fonte_documento: Certificação FDE · Semana 3 · Hotseat · Case 4 · Amparo Seguros
+  escopo: 'Sinistros pequenos de automóvel (até R$ 5 mil): vidros, retrovisores, para-choques e colisões leves'
+  carteira_apolices: '410000'
+types:
+  Reais:
+    typeof: decimal
+    uri: xsd:decimal
+    description: Valor monetário em reais (BRL).
+  Percentual:
+    typeof: decimal
+    uri: xsd:decimal
+    minimum_value: 0
+    maximum_value: 1
+    description: Proporção entre 0 e 1 (ex. 0.94 = 94%).
+  CPF:
+    typeof: string
+    uri: xsd:string
+    pattern: ^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$
+    description: Cadastro de Pessoa Física.
+enums:
+  TipoDano:
+    description: Tipos de dano que compõem os sinistros pequenos.
+    permissible_values:
+      VIDRO:
+        description: Vidros (27% dos sinistros pequenos).
+      RETROVISOR:
+        description: Retrovisores.
+      PARA_CHOQUE:
+        description: Para-choques.
+      COLISAO_LEVE:
+        description: Colisões leves.
+      OUTRO:
+        description: Outros danos de pequeno valor.
+  StatusSinistro:
+    description: Estado do sinistro no ciclo de vida (bloco Jogadas).
+    permissible_values:
+      AVISADO: null
+      AGUARDANDO_ORCAMENTO: null
+      EM_FILA: null
+      EM_REGULACAO: null
+      APROVADO: null
+      NEGADO: null
+      PAGO: null
+      CANCELADO: null
+  EtapaProcesso:
+    description: 'Etapas registradas com data e hora (bloco Jogadas): aviso, orçamento, regulação, fila, aprovação,
+      pagamento.'
+    permissible_values:
+      AVISO:
+        description: Segurado abre o sinistro pelo aplicativo e envia fotos.
+      ORCAMENTO:
+        description: Oficina envia o orçamento do conserto.
+      REGULACAO:
+        description: Analista confere cobertura, fotos e orçamento (média de 40 min de trabalho).
+      FILA:
+        description: Sinistro espera na fila do analista.
+      APROVACAO:
+        description: Analista aprova dentro da alçada de até R$ 5 mil.
+      PAGAMENTO:
+        description: Oficina ou segurado recebe. Dinheiro pago não volta.
+  FaixaPrazoPagamento:
+    description: Faixa de prazo entre aviso e pagamento usada no case.
+    permissible_values:
+      ATE_7_DIAS:
+        description: 38% dos sinistros; renovação de 84%.
+      MAIS_DE_7_DIAS:
+        description: 62% dos sinistros; renovação de 72%.
+  OrigemFoto:
+    description: Quem tirou a foto do dano.
+    permissible_values:
+      SEGURADO:
+        description: Foto do segurado pelo app (12% com baixa qualidade).
+      OFICINA_CREDENCIADA:
+        description: Foto de oficina credenciada (base do teste do modelo da startup).
+  QualidadeFoto:
+    description: Qualidade da foto para análise.
+    permissible_values:
+      ADEQUADA: null
+      ESCURA: null
+      CORTADA: null
+  DecisaoRegulacao:
+    description: Resultado da regulação.
+    permissible_values:
+      APROVADO: null
+      NEGADO: null
+      PENDENTE_INFORMACAO: null
+  TipoDecisor:
+    description: Quem tomou a decisão — essencial para auditoria e ouvidoria.
+    permissible_values:
+      ANALISTA_HUMANO: null
+      REGRA_AUTOMATICA: null
+      MODELO_IA: null
+  TipoBeneficiario:
+    description: Quem recebe a indenização.
+    permissible_values:
+      OFICINA: null
+      SEGURADO: null
+  FaixaScoreFraude:
+    description: Faixa do score de fraude do fornecedor (cortes não informados no case).
+    permissible_values:
+      BAIXO: null
+      MEDIO: null
+      ALTO: null
+  ResultadoAuditoria:
+    description: Resultado da auditoria amostral de fraude.
+    permissible_values:
+      SEM_INDICIO: null
+      FRAUDE_CONFIRMADA: null
+  TipoFraude:
+    description: 'Fraude em sinistro: pedido de indenização por dano falso, aumentado ou anterior à apólice.'
+    permissible_values:
+      DANO_FALSO: null
+      DANO_AUMENTADO: null
+      DANO_ANTERIOR_APOLICE: null
+  CanalReclamacao:
+    description: Onde a reclamação foi aberta.
+    permissible_values:
+      OUVIDORIA: null
+      REGULADOR_SETOR: null
+  BlocoOntologia:
+    description: Os cinco blocos do relatório de diagnóstico (aula de ontologia).
+    permissible_values:
+      PECAS:
+        description: Objetos e identidade.
+      TABULEIRO:
+        description: Relações.
+      REGRAS:
+        description: Regras de negócio.
+      JOGADAS:
+        description: Estados e eventos.
+      CONFERIR_A_CAIXA:
+        description: Qualidade dos dados.
+  AreaResponsavel:
+    description: Área dona de um dado ou responsável por um tema.
+    permissible_values:
+      SINISTROS: null
+      TI: null
+      PREVENCAO_FRAUDE: null
+      JURIDICO_OUVIDORIA: null
+      FORNECEDOR_EXTERNO: null
+  TipoRegra:
+    description: Categoria da regra de negócio.
+    permissible_values:
+      COBERTURA: null
+      ALCADA: null
+      ELEGIBILIDADE: null
+      RESTRICAO_OPERACIONAL: null
+  StatusApolice:
+    description: Situação da apólice. Renovação = o segurado contrata o seguro de novo no ano seguinte (derivável
+      do Histórico de apólices).
+    permissible_values:
+      VIGENTE: null
+      RENOVADA: null
+      NAO_RENOVADA: null
+      CANCELADA: null
+  BlocoDiagnostico:
+    description: Seção do diagnóstico que sustenta um elemento da ontologia.
+    permissible_values:
+      PECAS: {}
+      TABULEIRO: {}
+      REGRAS: {}
+      JOGADAS: {}
+      CONFERIR_A_CAIXA: {}
+      FONTES: {}
+      RESTRICOES: {}
+      DIAGNOSTICO: {}
+  OrigemModelagem:
+    description: Se o elemento está confirmado no diagnóstico ou foi inferido na modelagem.
+    permissible_values:
+      DIAGNOSTICO:
+        description: Citado na seção 5.
+      INFERIDO:
+        description: Necessário para o modelo, mas não confirmado na seção 5.
+slots:
+  id:
+    identifier: true
+    description: Primary key do object type.
+    annotations:
+      shared_property: 'true'
+  nome:
+    description: Nome legível (title key na maioria dos tipos).
+    annotations:
+      shared_property: 'true'
+  descricao:
+    description: Descrição livre.
+    annotations:
+      shared_property: 'true'
+  criado_em:
+    range: datetime
+    description: Momento de criação do registro.
+    annotations:
+      shared_property: 'true'
+  ocorrido_em:
+    range: datetime
+    description: Momento em que o evento aconteceu.
+    annotations:
+      shared_property: 'true'
+  valor:
+    range: Reais
+    minimum_value: 0
+    description: Valor monetário do objeto (orçamento, pagamento, parâmetro de ação).
+    annotations:
+      shared_property: 'true'
+  cpf:
+    range: CPF
+    description: CPF do segurado; chave do histórico de 5 anos.
+  numero_apolice:
+    description: Número comercial da apólice.
+  premio_anual:
+    range: Reais
+    description: 'Prêmio anual (média do case: R$ 3.100).'
+  vigencia_inicio:
+    range: date
+    description: Início da vigência.
+  vigencia_fim:
+    range: date
+    description: Fim da vigência.
+  status_apolice:
+    range: StatusApolice
+    description: Situação atual da apólice.
+  placa:
+    description: Placa do veículo.
+  chassi:
+    description: Chassi do veículo.
+  segurado:
+    range: Segurado
+    description: Titular da apólice.
+  veiculo:
+    range: Veiculo
+    description: Veículo coberto.
+  apolice_anterior:
+    range: Apolice
+    description: Apólice do ano anterior quando esta é uma renovação.
+  apolice:
+    range: Apolice
+    description: Apólice que cobre o sinistro.
+  tipo_dano:
+    range: TipoDano
+    description: Tipo de dano informado no aviso.
+  valor_orcado:
+    range: Reais
+    minimum_value: 0
+    description: Valor do orçamento vigente do sinistro.
+  status_sinistro:
+    range: StatusSinistro
+    description: Estado atual do sinistro.
+  etapa_atual:
+    range: EtapaProcesso
+    description: Etapa atual do processo.
+  aberto_em:
+    range: datetime
+    description: Momento do aviso pelo app.
+  pago_em:
+    range: datetime
+    description: Momento do pagamento.
+  dias_ate_pagamento:
+    range: decimal
+    minimum_value: 0
+    description: '(pago_em − aberto_em) em dias. Média atual: 9,2 dias.'
+    annotations:
+      foundry_function: calcularDiasAtePagamento
+  faixa_prazo_pagamento:
+    range: FaixaPrazoPagamento
+    description: Faixa do prazo de pagamento (≤ 7 dias / > 7 dias).
+    annotations:
+      foundry_function: classificarFaixaPrazo
+  possui_foto:
+    range: boolean
+    description: Se o sinistro tem ao menos uma foto (7% chegam sem nenhuma).
+    annotations:
+      foundry_function: existeLink(Sinistro → FotoDano)
+  teve_sinistro_ultimos_12m:
+    range: boolean
+    description: Se o CPF teve outro sinistro nos 12 meses anteriores (histórico de 5 anos).
+    annotations:
+      foundry_function: possuiSinistroNosUltimos12Meses
+  sinistro:
+    range: Sinistro
+    description: Sinistro ao qual o objeto pertence.
+  origem_foto:
+    range: OrigemFoto
+    description: Quem tirou a foto.
+  qualidade_foto:
+    range: QualidadeFoto
+    description: Qualidade da foto para análise.
+  uri_arquivo:
+    range: uri
+    description: Local do arquivo da foto.
+  oficina:
+    range: Oficina
+    description: Oficina que emitiu o orçamento.
+  credenciada:
+    range: boolean
+    description: Se a oficina é credenciada.
+  completo:
+    range: boolean
+    description: Se o orçamento está completo (100% dos casos, bloco Conferir a caixa).
+  analista:
+    range: AnalistaRegulacao
+    description: Analista responsável.
+  orcamento_analisado:
+    range: Orcamento
+    description: Orçamento que embasou a decisão.
+  alcada_maxima:
+    range: Reais
+    description: Alçada de aprovação do analista (até R$ 5 mil).
+  entrou_na_fila_em:
+    range: datetime
+    description: Momento em que o sinistro entrou na fila do analista.
+  iniciado_em:
+    range: datetime
+    description: Início da análise.
+  concluido_em:
+    range: datetime
+    description: Fim da análise.
+  tempo_trabalho_min:
+    range: decimal
+    minimum_value: 0
+    description: 'Tempo de trabalho efetivo do analista. LACUNA: hoje não é registrado por sinistro (bloco Jogadas);
+      a média de 40 min não tem registro por evento.'
+    annotations:
+      lacuna_dados: 'true'
+  custo_regulacao:
+    range: Reais
+    description: Custo da regulação (R$ 85).
+  decisao:
+    range: DecisaoRegulacao
+    description: Resultado da regulação.
+  tipo_decisor:
+    range: TipoDecisor
+    description: Quem decidiu.
+  justificativa:
+    description: Motivo da decisão, usado em auditoria e ouvidoria.
+  valor_aprovado:
+    range: Reais
+    minimum_value: 0
+    description: Valor aprovado para indenização.
+  tipo_beneficiario:
+    range: TipoBeneficiario
+    description: Quem recebe.
+  regulacao:
+    range: Regulacao
+    description: Regulação que autorizou o pagamento.
+  modelo:
+    range: ModeloAnalitico
+    description: Modelo que gerou a saída.
+  versao_modelo:
+    description: Versão do modelo.
+  fornecedor:
+    description: Quem fornece o modelo.
+  score:
+    range: decimal
+    description: Nota bruta de risco de fraude.
+  faixa_score_fraude:
+    range: FaixaScoreFraude
+    description: Faixa do score de fraude.
+  confianca_modelo:
+    range: Percentual
+    description: Confiança da saída do modelo.
+  acuracia_teste:
+    range: Percentual
+    description: Acerto medido no teste do fornecedor.
+  base_teste:
+    description: Dados usados no teste.
+  populacao_calibracao:
+    description: População em que o modelo foi treinado/calibrado — risco ao aplicar fora dela.
+  resultado_auditoria:
+    range: ResultadoAuditoria
+    description: Resultado da auditoria.
+  tipo_fraude:
+    range: TipoFraude
+    description: Tipo de fraude encontrada.
+  canal:
+    range: CanalReclamacao
+    description: Canal da reclamação.
+  motivo:
+    description: Motivo da reclamação.
+  resolvida:
+    range: boolean
+    description: Se a reclamação foi encerrada.
+  etapa:
+    range: EtapaProcesso
+    description: Etapa em que o evento ocorreu.
+  status_anterior:
+    range: StatusSinistro
+    description: Estado antes do evento.
+  status_novo:
+    range: StatusSinistro
+    description: Estado depois do evento.
+  conteudo:
+    description: O que o sistema/fonte guarda.
+  dono:
+    range: AreaResponsavel
+    description: Área dona da fonte.
+  tipo_regra:
+    range: TipoRegra
+    description: Categoria da regra.
+  expressao:
+    description: Expressão lógica da regra, quando formalizável.
+  limite_valor:
+    range: Reais
+    description: Limite monetário da regra.
+  executado_por:
+    description: Usuário ou serviço que submeteu a ação.
+  executado_em:
+    range: datetime
+    description: Momento da submissão.
+  sinistro_alvo:
+    range: Sinistro
+    description: Sinistro afetado pela ação.
+  bloco:
+    range: BlocoOntologia
+    description: Bloco do diagnóstico.
+  o_que_existe:
+    description: O que existe nos dados para o bloco.
+  o_que_falta:
+    description: O que falta ou tem problema.
+classes:
+  Rastreavel:
+    mixin: true
+    description: Interface — registro com momento de criação.
+    slots:
+    - criado_em
+    annotations:
+      foundry_kind: interface
+  EventoDatado:
+    mixin: true
+    description: Interface — algo que acontece num instante (bloco Jogadas).
+    slots:
+    - ocorrido_em
+    slot_usage:
+      ocorrido_em:
+        required: true
+    annotations:
+      foundry_kind: interface
+  Pessoa:
+    mixin: true
+    description: Interface — pessoa física identificável.
+    slots:
+    - nome
+    annotations:
+      foundry_kind: interface
+  SaidaDeModelo:
+    mixin: true
+    description: Interface — resultado de um modelo analítico, sempre ligado ao modelo e à versão para permitir
+      auditoria e reavaliação.
+    slots:
+    - modelo
+    - versao_modelo
+    - confianca_modelo
+    slot_usage:
+      modelo:
+        required: true
+    annotations:
+      foundry_kind: interface
+  DecisaoAuditavel:
+    mixin: true
+    description: Interface — decisão que pode virar reclamação na ouvidoria ou no regulador; exige saber quem decidiu
+      e por quê.
+    slots:
+    - tipo_decisor
+    - justificativa
+    slot_usage:
+      tipo_decisor:
+        required: true
+    annotations:
+      foundry_kind: interface
+  Segurado:
+    mixins:
+    - Pessoa
+    - Rastreavel
+    description: Titular da apólice. Histórico de 5 anos por CPF.
+    slots:
+    - id
+    - cpf
+    slot_usage:
+      cpf:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      backing_datasource: Histórico de apólices (TI)
+      bloco_diagnostico: PECAS
+      origem_modelagem: DIAGNOSTICO
+  Veiculo:
+    mixins:
+    - Rastreavel
+    description: Veículo segurado.
+    slots:
+    - id
+    - placa
+    - chassi
+    annotations:
+      foundry_kind: object_type
+      title_property: placa
+      backing_datasource: Histórico de apólices (TI)
+      bloco_diagnostico: PECAS
+      origem_modelagem: DIAGNOSTICO
+  Apolice:
+    mixins:
+    - Rastreavel
+    description: Contrato de seguro de automóvel (carteira de 410.000 apólices).
+    slots:
+    - id
+    - numero_apolice
+    - segurado
+    - veiculo
+    - premio_anual
+    - vigencia_inicio
+    - vigencia_fim
+    - status_apolice
+    - apolice_anterior
+    slot_usage:
+      segurado:
+        required: true
+        annotations:
+          link_type: apolice_segurado
+          cardinalidade: N:1
+          lado_inverso: apolices
+      veiculo:
+        annotations:
+          link_type: apolice_veiculo
+          cardinalidade: N:1
+          lado_inverso: apolices
+      apolice_anterior:
+        annotations:
+          link_type: renovacao_apolice
+          cardinalidade: '1:1'
+          lado_inverso: renovada_por
+    annotations:
+      foundry_kind: object_type
+      title_property: numero_apolice
+      backing_datasource: Histórico de apólices (TI)
+      bloco_diagnostico: PECAS
+      origem_modelagem: DIAGNOSTICO
+  Sinistro:
+    mixins:
+    - Rastreavel
+    description: 'Evento coberto pelo seguro, como uma batida ou um vidro quebrado, que gera o pedido de indenização.
+      Escopo: sinistro pequeno (até R$ 5 mil).'
+    slots:
+    - id
+    - apolice
+    - tipo_dano
+    - valor_orcado
+    - status_sinistro
+    - etapa_atual
+    - aberto_em
+    - pago_em
+    - dias_ate_pagamento
+    - faixa_prazo_pagamento
+    - possui_foto
+    - teve_sinistro_ultimos_12m
+    slot_usage:
+      apolice:
+        required: true
+        annotations:
+          link_type: sinistro_apolice
+          cardinalidade: N:1
+          lado_inverso: sinistros
+      aberto_em:
+        required: true
+      status_sinistro:
+        required: true
+      valor_orcado:
+        maximum_value: 5000
+        description: Sinistro pequeno = até R$ 5 mil.
+    rules:
+    - description: Sinistro pago precisa ter data de pagamento.
+      preconditions:
+        slot_conditions:
+          status_sinistro:
+            equals_string: PAGO
+      postconditions:
+        slot_conditions:
+          pago_em:
+            required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      bloco_diagnostico: PECAS
+      origem_modelagem: DIAGNOSTICO
+      nota_diagnostico: 7% dos sinistros sem foto
+  Oficina:
+    mixins:
+    - Rastreavel
+    description: Oficina que envia orçamentos e pode receber o pagamento.
+    slots:
+    - id
+    - nome
+    - credenciada
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      backing_datasource: Sistema de sinistros (Sinistros)
+      bloco_diagnostico: PECAS
+      origem_modelagem: DIAGNOSTICO
+  FotoDano:
+    mixins:
+    - Rastreavel
+    description: Foto do dano enviada pelo segurado (app) ou por oficina credenciada.
+    slots:
+    - id
+    - sinistro
+    - origem_foto
+    - qualidade_foto
+    - uri_arquivo
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: foto_sinistro
+          cardinalidade: N:1
+          lado_inverso: fotos
+      origem_foto:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      qualidade_conhecida: 12% das fotos de segurados com baixa qualidade (escuras, cortadas)
+      bloco_diagnostico: CONFERIR_A_CAIXA
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Conteúdo do Sistema de sinistros; identificador único não confirmado no diagnóstico. 12%
+        das fotos de segurados com baixa qualidade
+  Orcamento:
+    mixins:
+    - Rastreavel
+    description: Orçamento do conserto enviado pela oficina (completo em 100% dos casos).
+    slots:
+    - id
+    - sinistro
+    - oficina
+    - valor
+    - completo
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: orcamento_sinistro
+          cardinalidade: N:1
+          lado_inverso: orcamentos
+      oficina:
+        required: true
+        annotations:
+          link_type: orcamento_oficina
+          cardinalidade: N:1
+          lado_inverso: orcamentos
+      valor:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      bloco_diagnostico: CONFERIR_A_CAIXA
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Conteúdo do Sistema de sinistros; identificador único não confirmado. Orçamentos completos
+        em 100%
+  AnalistaRegulacao:
+    mixins:
+    - Pessoa
+    - Rastreavel
+    description: Um dos 22 analistas que analisam e aprovam sinistros.
+    slots:
+    - id
+    - alcada_maxima
+    slot_usage:
+      alcada_maxima:
+        maximum_value: 5000
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      backing_datasource: NÃO IDENTIFICADA no diagnóstico
+      bloco_diagnostico: REGRAS
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Necessário para a alçada; não aparece em Peças nem em Fontes
+  Regulacao:
+    mixins:
+    - Rastreavel
+    - DecisaoAuditavel
+    description: 'Análise do sinistro: confere cobertura, fotos, orçamento e decide se paga e quanto. Custo de R$
+      85 por regulação.'
+    slots:
+    - id
+    - sinistro
+    - analista
+    - orcamento_analisado
+    - entrou_na_fila_em
+    - iniciado_em
+    - concluido_em
+    - tempo_trabalho_min
+    - custo_regulacao
+    - decisao
+    - valor_aprovado
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: regulacao_sinistro
+          cardinalidade: N:1
+          lado_inverso: regulacoes
+      analista:
+        annotations:
+          link_type: regulacao_analista
+          cardinalidade: N:1
+          lado_inverso: regulacoes
+      orcamento_analisado:
+        annotations:
+          link_type: regulacao_orcamento
+          cardinalidade: N:1
+          lado_inverso: regulacoes
+      valor_aprovado:
+        maximum_value: 5000
+    rules:
+    - description: Regulação aprovada precisa de valor aprovado.
+      preconditions:
+        slot_conditions:
+          decisao:
+            equals_string: APROVADO
+      postconditions:
+        slot_conditions:
+          valor_aprovado:
+            required: true
+    - description: Negativa precisa de justificativa (ouvidoria/regulador).
+      preconditions:
+        slot_conditions:
+          decisao:
+            equals_string: NEGADO
+      postconditions:
+        slot_conditions:
+          justificativa:
+            required: true
+    - description: Decisão por analista humano precisa identificar o analista.
+      preconditions:
+        slot_conditions:
+          tipo_decisor:
+            equals_string: ANALISTA_HUMANO
+      postconditions:
+        slot_conditions:
+          analista:
+            required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      bloco_diagnostico: JOGADAS
+      origem_modelagem: INFERIDO
+      nota_diagnostico: '"Decisões" no Sistema de sinistros; tempo de trabalho do analista não registrado'
+  Pagamento:
+    mixins:
+    - Rastreavel
+    - EventoDatado
+    description: Indenização paga à oficina ou ao segurado. Irreversível na prática.
+    slots:
+    - id
+    - sinistro
+    - regulacao
+    - tipo_beneficiario
+    - valor
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: pagamento_sinistro
+          cardinalidade: N:1
+          lado_inverso: pagamentos
+      regulacao:
+        required: true
+        annotations:
+          link_type: pagamento_regulacao
+          cardinalidade: N:1
+          lado_inverso: pagamentos
+      valor:
+        required: true
+        maximum_value: 5000
+      tipo_beneficiario:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      reversibilidade: IRREVERSIVEL
+      bloco_diagnostico: JOGADAS
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Conteúdo do Sistema de sinistros; identificador único não confirmado
+  EventoSinistro:
+    mixins:
+    - EventoDatado
+    - Rastreavel
+    description: Transição de etapa/estado com data e hora (todas as etapas são registradas).
+    slots:
+    - id
+    - sinistro
+    - etapa
+    - status_anterior
+    - status_novo
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: evento_sinistro
+          cardinalidade: N:1
+          lado_inverso: eventos
+      status_novo:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Sistema de sinistros (Sinistros)
+      bloco_diagnostico: JOGADAS
+      origem_modelagem: DIAGNOSTICO
+      nota_diagnostico: Todas as etapas com data e hora
+  ModeloAnalitico:
+    mixins:
+    - Rastreavel
+    description: Modelo usado no processo, representado como objeto para guardar onde foi testado e calibrado e
+      evitar uso fora da população-alvo.
+    slots:
+    - id
+    - nome
+    - fornecedor
+    - versao_modelo
+    - acuracia_teste
+    - base_teste
+    - populacao_calibracao
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      bloco_diagnostico: REGRAS
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Representa o score do fornecedor
+  ScoreFraude:
+    mixins:
+    - SaidaDeModelo
+    - Rastreavel
+    description: Nota de risco de fraude do fornecedor para um sinistro.
+    slots:
+    - id
+    - sinistro
+    - score
+    - faixa_score_fraude
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: score_sinistro
+          cardinalidade: N:1
+          lado_inverso: scores_fraude
+      modelo:
+        annotations:
+          link_type: score_modelo
+          cardinalidade: N:1
+          lado_inverso: scores
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Score de fraude do fornecedor (seção 3 do case; ausente da tabela de Fontes da seção 5)
+      ressalva: Calibrado com sinistros acima de R$ 20 mil — não para os pequenos
+      bloco_diagnostico: REGRAS
+      origem_modelagem: DIAGNOSTICO
+      nota_diagnostico: Calibrado para sinistros grandes; fonte não listada na tabela de Fontes
+  AuditoriaFraude:
+    mixins:
+    - Rastreavel
+    - EventoDatado
+    description: Auditoria amostral mensal de sinistros pagos (fraude encontrada em 3,1%).
+    slots:
+    - id
+    - sinistro
+    - resultado_auditoria
+    - tipo_fraude
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: auditoria_sinistro
+          cardinalidade: N:1
+          lado_inverso: auditorias
+      resultado_auditoria:
+        required: true
+    rules:
+    - description: Fraude confirmada precisa do tipo de fraude.
+      preconditions:
+        slot_conditions:
+          resultado_auditoria:
+            equals_string: FRAUDE_CONFIRMADA
+      postconditions:
+        slot_conditions:
+          tipo_fraude:
+            required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: Auditoria de fraude (Prevenção a fraude)
+      bloco_diagnostico: FONTES
+      origem_modelagem: DIAGNOSTICO
+      nota_diagnostico: Amostra mensal de sinistros pagos
+  Reclamacao:
+    mixins:
+    - Rastreavel
+    - EventoDatado
+    description: Reclamação na ouvidoria ou no regulador do setor sobre uma decisão de sinistro.
+    slots:
+    - id
+    - sinistro
+    - canal
+    - motivo
+    - resolvida
+    slot_usage:
+      sinistro:
+        required: true
+        annotations:
+          link_type: reclamacao_sinistro
+          cardinalidade: N:1
+          lado_inverso: reclamacoes
+      canal:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: id
+      backing_datasource: NÃO IDENTIFICADA no diagnóstico
+      bloco_diagnostico: RESTRICOES
+      origem_modelagem: INFERIDO
+      nota_diagnostico: Citada nas Restrições, mas sem fonte de dados no diagnóstico
+  RegraNegocio:
+    description: Regra explícita (cobertura, alçada, elegibilidade, restrição operacional).
+    slots:
+    - id
+    - nome
+    - tipo_regra
+    - descricao
+    - expressao
+    - limite_valor
+    slot_usage:
+      tipo_regra:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      bloco_diagnostico: REGRAS
+      origem_modelagem: DIAGNOSTICO
+  SistemaFonte:
+    description: Fonte listada no diagnóstico (seção 5), com conteúdo e dono.
+    slots:
+    - id
+    - nome
+    - conteudo
+    - dono
+    slot_usage:
+      dono:
+        required: true
+    annotations:
+      foundry_kind: object_type
+      title_property: nome
+      bloco_diagnostico: FONTES
+      origem_modelagem: DIAGNOSTICO
+  AvaliacaoBloco:
+    description: 'Um dos cinco blocos do diagnóstico (seção 5): o que existe e o que falta. Não avalia soluções.'
+    slots:
+    - id
+    - bloco
+    - o_que_existe
+    - o_que_falta
+    annotations:
+      foundry_kind: object_type
+      title_property: bloco
+      bloco_diagnostico: DIAGNOSTICO
+      origem_modelagem: DIAGNOSTICO
+    slot_usage:
+      bloco:
+        required: true
+  AcaoOntologica:
+    abstract: true
+    description: Base dos Action Types. Cada submissão vira um registro auditável com quem executou, quando. Nível
+      de automação, reversibilidade e tipo de decisor são propriedades do Action Type (annotations), não parâmetros
+      de cada submissão.
+    slots:
+    - id
+    - executado_por
+    - executado_em
+    - sinistro_alvo
+    slot_usage:
+      executado_por:
+        required: true
+      executado_em:
+        required: true
+      sinistro_alvo:
+        required: true
+    annotations:
+      foundry_kind: action_type_base
+  AbrirAvisoSinistro:
+    is_a: AcaoOntologica
+    description: Segurado abre o sinistro pelo app. Cria o Sinistro (status AVISADO).
+    slots:
+    - apolice
+    - tipo_dano
+    slot_usage:
+      apolice:
+        required: true
+      sinistro_alvo:
+        required: false
+        description: Vazio na submissão; preenchido com o sinistro criado.
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      edita: cria Sinistro; cria EventoSinistro(AVISO)
+      criterio_submissao: Apolice.status_apolice = VIGENTE
+      escopo: processo atual (as-is)
+  AnexarFotoDano:
+    is_a: AcaoOntologica
+    description: Anexa uma foto do dano ao sinistro.
+    slots:
+    - origem_foto
+    - uri_arquivo
+    slot_usage:
+      uri_arquivo:
+        required: true
+      origem_foto:
+        required: true
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      edita: cria FotoDano ligada ao Sinistro; recalcula Sinistro.possui_foto
+      escopo: processo atual (as-is)
+  RegistrarOrcamento:
+    is_a: AcaoOntologica
+    description: Registra o orçamento enviado pela oficina.
+    slots:
+    - oficina
+    - valor
+    slot_usage:
+      oficina:
+        required: true
+      valor:
+        required: true
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      edita: cria Orcamento; atualiza Sinistro.valor_orcado e etapa_atual
+      escopo: processo atual (as-is)
+  AprovarSinistro:
+    is_a: AcaoOntologica
+    description: Analista aprova o sinistro dentro da sua alçada.
+    slots:
+    - justificativa
+    - analista
+    - valor_aprovado
+    slot_usage:
+      analista:
+        required: true
+      valor_aprovado:
+        required: true
+        maximum_value: 5000
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      tipo_decisor: ANALISTA_HUMANO
+      edita: cria/atualiza Regulacao(decisao=APROVADO); Sinistro.status_sinistro=APROVADO
+      criterio_submissao: valor_aprovado ≤ analista.alcada_maxima; cobertura conferida nas condições gerais
+      escopo: processo atual (as-is)
+  NegarSinistro:
+    is_a: AcaoOntologica
+    description: Negativa de indenização — irreversível perante o cliente e sujeita a reclamação.
+    slots:
+    - justificativa
+    - analista
+    slot_usage:
+      analista:
+        required: true
+      justificativa:
+        required: true
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: IRREVERSIVEL
+      tipo_decisor: ANALISTA_HUMANO
+      edita: Regulacao(decisao=NEGADO); Sinistro.status_sinistro=NEGADO
+      criterio_submissao: somente humano; justificativa obrigatória
+      escopo: processo atual (as-is)
+      origem_modelagem: INFERIDO
+      nota_diagnostico: O processo descrito não tem etapa de negativa; inferida de "decide se paga e quanto"
+  EmitirPagamento:
+    is_a: AcaoOntologica
+    description: Paga a oficina ou o segurado. Dinheiro pago não volta.
+    slots:
+    - regulacao
+    - tipo_beneficiario
+    - valor
+    slot_usage:
+      regulacao:
+        required: true
+      tipo_beneficiario:
+        required: true
+      valor:
+        required: true
+        maximum_value: 5000
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: IRREVERSIVEL
+      edita: cria Pagamento; Sinistro.status_sinistro=PAGO; Sinistro.pago_em
+      criterio_submissao: Regulacao.decisao = APROVADO; valor ≤ Regulacao.valor_aprovado
+      side_effect: webhook para o Sistema de sinistros / meio de pagamento
+      escopo: processo atual (as-is)
+  RegistrarAuditoriaFraude:
+    is_a: AcaoOntologica
+    description: Prevenção a fraude registra o resultado da auditoria amostral de um sinistro pago.
+    slots:
+    - resultado_auditoria
+    - tipo_fraude
+    slot_usage:
+      resultado_auditoria:
+        required: true
+    rules:
+    - description: Fraude confirmada precisa do tipo de fraude.
+      preconditions:
+        slot_conditions:
+          resultado_auditoria:
+            equals_string: FRAUDE_CONFIRMADA
+      postconditions:
+        slot_conditions:
+          tipo_fraude:
+            required: true
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      edita: cria AuditoriaFraude
+      criterio_submissao: Sinistro.status_sinistro = PAGO; executado por Prevenção a fraude
+      escopo: processo atual (as-is)
+  RegistrarReclamacao:
+    is_a: AcaoOntologica
+    description: Registra reclamação aberta na ouvidoria ou no regulador sobre um sinistro.
+    slots:
+    - canal
+    - motivo
+    slot_usage:
+      canal:
+        required: true
+    annotations:
+      foundry_kind: action_type
+      reversibilidade: REVERSIVEL
+      edita: cria Reclamacao
+      escopo: processo atual (as-is)
+  OntologiaAmparoCore:
+    tree_root: true
+    description: Container da Entrega 1 (diagnóstico).
+    attributes:
+      segurados:
+        range: Segurado
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Segurado.
+      veiculos:
+        range: Veiculo
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Veiculo.
+      apolices:
+        range: Apolice
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Apolice.
+      sinistros:
+        range: Sinistro
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Sinistro.
+      oficinas:
+        range: Oficina
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Oficina.
+      fotos_dano:
+        range: FotoDano
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de FotoDano.
+      orcamentos:
+        range: Orcamento
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Orcamento.
+      analistas:
+        range: AnalistaRegulacao
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de AnalistaRegulacao.
+      regulacoes:
+        range: Regulacao
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Regulacao.
+      pagamentos:
+        range: Pagamento
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Pagamento.
+      eventos:
+        range: EventoSinistro
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de EventoSinistro.
+      modelos:
+        range: ModeloAnalitico
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de ModeloAnalitico.
+      scores_fraude:
+        range: ScoreFraude
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de ScoreFraude.
+      auditorias:
+        range: AuditoriaFraude
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de AuditoriaFraude.
+      reclamacoes:
+        range: Reclamacao
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de Reclamacao.
+      regras:
+        range: RegraNegocio
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de RegraNegocio.
+      sistemas_fonte:
+        range: SistemaFonte
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de SistemaFonte.
+      avaliacoes_bloco:
+        range: AvaliacaoBloco
+        multivalued: true
+        inlined_as_list: true
+        description: Instâncias de AvaliacaoBloco.

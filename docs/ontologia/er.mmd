@@ -1,0 +1,144 @@
+---
+config:
+  layout: elk
+---
+erDiagram
+AnalistaRegulacao {
+    string id  
+    Reais alcada_maxima  
+    datetime criado_em  
+    string nome  
+}
+Apolice {
+    string id  
+    string numero_apolice  
+    Reais premio_anual  
+    StatusApolice status_apolice  
+    date vigencia_fim  
+    date vigencia_inicio  
+    datetime criado_em  
+}
+AuditoriaFraude {
+    string id  
+    ResultadoAuditoria resultado_auditoria  
+    TipoFraude tipo_fraude  
+    datetime criado_em  
+    datetime ocorrido_em  
+}
+EventoSinistro {
+    string id  
+    EtapaProcesso etapa  
+    StatusSinistro status_anterior  
+    StatusSinistro status_novo  
+    datetime criado_em  
+    datetime ocorrido_em  
+}
+FotoDano {
+    string id  
+    OrigemFoto origem_foto  
+    QualidadeFoto qualidade_foto  
+    uri uri_arquivo  
+    datetime criado_em  
+}
+ModeloAnalitico {
+    string id  
+    Percentual acuracia_teste  
+    string base_teste  
+    string fornecedor  
+    string nome  
+    string populacao_calibracao  
+    string versao_modelo  
+    datetime criado_em  
+}
+Oficina {
+    string id  
+    boolean credenciada  
+    string nome  
+    datetime criado_em  
+}
+Orcamento {
+    string id  
+    boolean completo  
+    Reais valor  
+    datetime criado_em  
+}
+Pagamento {
+    string id  
+    TipoBeneficiario tipo_beneficiario  
+    Reais valor  
+    datetime criado_em  
+    datetime ocorrido_em  
+}
+Reclamacao {
+    string id  
+    CanalReclamacao canal  
+    string motivo  
+    boolean resolvida  
+    datetime criado_em  
+    datetime ocorrido_em  
+}
+Regulacao {
+    string id  
+    datetime concluido_em  
+    Reais custo_regulacao  
+    DecisaoRegulacao decisao  
+    datetime entrou_na_fila_em  
+    datetime iniciado_em  
+    decimal tempo_trabalho_min  
+    Reais valor_aprovado  
+    datetime criado_em  
+    string justificativa  
+    TipoDecisor tipo_decisor  
+}
+ScoreFraude {
+    string id  
+    FaixaScoreFraude faixa_score_fraude  
+    decimal score  
+    Percentual confianca_modelo  
+    datetime criado_em  
+    string versao_modelo  
+}
+Segurado {
+    string id  
+    CPF cpf  
+    datetime criado_em  
+    string nome  
+}
+Sinistro {
+    string id  
+    datetime aberto_em  
+    decimal dias_ate_pagamento  
+    EtapaProcesso etapa_atual  
+    FaixaPrazoPagamento faixa_prazo_pagamento  
+    datetime pago_em  
+    boolean possui_foto  
+    StatusSinistro status_sinistro  
+    boolean teve_sinistro_ultimos_12m  
+    TipoDano tipo_dano  
+    Reais valor_orcado  
+    datetime criado_em  
+}
+Veiculo {
+    string id  
+    string chassi  
+    string placa  
+    datetime criado_em  
+}
+
+Segurado ||--o{ Apolice : "contrata"
+Apolice }o--o| Veiculo : "cobre"
+AuditoriaFraude }o--|| Sinistro : "audita"
+EventoSinistro }o--|| Sinistro : "registra etapa de"
+FotoDano }o--|| Sinistro : "documenta"
+Oficina ||--o{ Orcamento : "emite"
+Orcamento }o--|| Sinistro : "orça o conserto de"
+Regulacao ||--o{ Pagamento : "autoriza"
+Pagamento }o--|| Sinistro : "indeniza"
+Reclamacao }o--|| Sinistro : "contesta"
+AnalistaRegulacao |o--o{ Regulacao : "realiza"
+Regulacao }o--o| Orcamento : "avalia"
+Regulacao }o--|| Sinistro : "analisa"
+Apolice |o--o| Apolice : "renova"
+ModeloAnalitico |o--o{ ScoreFraude : "gera"
+ScoreFraude }o--|| Sinistro : "avalia o risco de"
+Sinistro }o--|| Apolice : "aciona"

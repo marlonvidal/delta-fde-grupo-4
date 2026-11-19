@@ -49,6 +49,12 @@ Existe: orçamentos completos em 100%.
 
 Falta ou tem problema: 12% das fotos de segurados com baixa qualidade.
 
+## Diagrama ER
+
+- Schema (fonte): [`amparo_core.yaml`](amparo_core.yaml)
+- Diagrama: [`er.pdf`](er.pdf), gerado a partir de [`er.mmd`](er.mmd)
+- Como regenerar: [`scripts/README.md`](../../scripts/README.md)
+
 ## Restrições
 
 - Pagamento feito não volta: recuperar valor pago por erro é raro e caro.
