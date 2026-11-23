@@ -1,0 +1,226 @@
+{
+  "versao_fluxo": "0.1.0",
+  "execucao_id": "RUN-INT-002",
+  "caso_id": "FDE-002",
+  "versao_entrada": "1",
+  "entrada_sha256": "fd2238ee76b381a0e6f2a984a286ee4cea4a7d6281fae4dcb116cd239afdebda",
+  "execucao_anterior_id": null,
+  "gerado_em": "2026-11-20T10:00:00-03:00",
+  "rota": "COMPLEMENTACAO_DOCUMENTAL",
+  "situacao_painel": "AGUARDANDO_SOLICITACAO_COMPLEMENTO",
+  "resumo": "Analista confirma pendências e solicita complemento ao segurado; nenhuma mensagem foi enviada.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "modulos": {
+    "documentacao": {
+      "estado": "EXECUTADO",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-002",
+        "modulo": "documentacao",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "CONCLUIDO",
+        "justificativa": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "SOLICITAR_FOTO",
+            "responsavel": "ANALISTA_HUMANO",
+            "descricao": "Solicitar ao analista providenciar foto adequada e reavaliar documentação.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "situacao_documental": "PENDENTE",
+        "verificacoes": [
+          {
+            "criterio_id": "DOC-APOLICE",
+            "resultado": "ATENDIDO",
+            "descricao": "Apólice vinculada e evento dentro da vigência.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-FOTO",
+            "resultado": "NAO_ATENDIDO",
+            "descricao": "Foto obrigatória ausente.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-ORCAMENTO",
+            "resultado": "ATENDIDO",
+            "descricao": "Orçamento completo e vinculado; valores concordam.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-ORC"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "pendencias": [
+          {
+            "codigo": "CRITERIO_NAO_ATENDIDO",
+            "campo": "fotos",
+            "descricao": "Inventário confirma ausência da foto exigida.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "observacoes": []
+      }
+    },
+    "triagem": {
+      "estado": "EXECUTADO",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-002",
+        "modulo": "triagem",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "CONCLUIDO",
+        "justificativa": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "SOLICITAR_FOTO",
+            "responsavel": "ANALISTA_HUMANO",
+            "descricao": "Solicitar ao analista providenciar foto adequada e reavaliar documentação.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "encaminhamento": "COMPLEMENTACAO_DOCUMENTAL",
+        "gatilhos": [
+          {
+            "descricao": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-ORC",
+              "E-FOT",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-ESCOPO",
+              "R-DOC",
+              "R-COB",
+              "R-TRI",
+              "R-REC"
+            ]
+          }
+        ],
+        "achados_secundarios": [
+          {
+            "descricao": "Foto obrigatória ausente.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ]
+      }
+    },
+    "parecer": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "DESVIO_DE_ROTA",
+      "saida": null
+    },
+    "recomendacao": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "DESVIO_DE_ROTA",
+      "saida": null
+    }
+  },
+  "proxima_acao": {
+    "codigo": "SOLICITAR_COMPLEMENTO",
+    "descricao": "Analista confirma pendências e solicita complemento ao segurado; nenhuma mensagem foi enviada.",
+    "responsavel": "ANALISTA_HUMANO",
+    "evidencias_ids": [
+      "E-SIN",
+      "E-APO",
+      "E-ORC",
+      "E-FOT",
+      "E-CTX"
+    ],
+    "regras_ids": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-COB",
+      "R-TRI",
+      "R-REC"
+    ]
+  },
+  "requer_decisao_humana": true,
+  "decisao_humana": null,
+  "pagamento_executado_pelo_agente": false
+}

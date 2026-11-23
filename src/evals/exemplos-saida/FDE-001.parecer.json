@@ -1,0 +1,101 @@
+{
+  "caso_id": "FDE-001",
+  "modulo": "parecer",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "CONCLUIDO",
+  "justificativa": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "DECIDIR_E_CALCULAR",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "analise_cobertura": "SUSTENTADA_PELAS_REGRAS_FORNECIDAS",
+  "resumo": "Sinistro sintético de vidro, evento em 18/11/2026, apólice com vigência de 01/01 a 31/12/2026.",
+  "afirmacoes": [
+    {
+      "texto": "O tipo de dano informado é VIDRO.",
+      "tipo": "FATO",
+      "evidencias_ids": [
+        "E-SIN"
+      ],
+      "regras_ids": [],
+      "formula": null
+    },
+    {
+      "texto": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+      "tipo": "INFERENCIA",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ],
+      "formula": null
+    }
+  ],
+  "inconsistencias": [],
+  "limitacoes": [],
+  "conclusao": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+  "verificacoes_humanas": [
+    {
+      "codigo": "DECIDIR_E_CALCULAR",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ]
+}

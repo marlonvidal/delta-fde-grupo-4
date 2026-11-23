@@ -1,0 +1,92 @@
+{
+  "caso_id": "FDE-003",
+  "modulo": "documentacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "INSUFICIENTE",
+  "justificativa": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [
+    {
+      "codigo": "CONFLITO",
+      "campo": "sinistro.valor_orcado",
+      "descricao": "Sinistro informa 2300.00 BRL e orçamento informa 1800.00 BRL.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "proximas_acoes": [
+    {
+      "codigo": "CONFERIR_VALORES",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Conferir os valores de sinistro e orçamento e corrigir a fonte divergente.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "situacao_documental": "INDETERMINADA",
+  "verificacoes": [
+    {
+      "criterio_id": "DOC-APOLICE",
+      "resultado": "ATENDIDO",
+      "descricao": "Apólice vinculada e evento dentro da vigência.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-FOTO",
+      "resultado": "ATENDIDO",
+      "descricao": "Metadados informam ao menos uma foto adequada; imagem não foi examinada.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-ORCAMENTO",
+      "resultado": "DESCONHECIDO",
+      "descricao": "Conflito de valores requer conferência.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "pendencias": [],
+  "observacoes": []
+}

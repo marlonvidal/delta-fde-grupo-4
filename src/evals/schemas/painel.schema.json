@@ -1,0 +1,1568 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Snapshot consolidado do painel 0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "versao_fluxo",
+    "execucao_id",
+    "caso_id",
+    "versao_entrada",
+    "entrada_sha256",
+    "execucao_anterior_id",
+    "gerado_em",
+    "rota",
+    "situacao_painel",
+    "resumo",
+    "evidencias_ids",
+    "regras_ids",
+    "modulos",
+    "proxima_acao",
+    "requer_decisao_humana",
+    "decisao_humana",
+    "pagamento_executado_pelo_agente"
+  ],
+  "properties": {
+    "versao_fluxo": {
+      "const": "0.1.0"
+    },
+    "execucao_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versao_entrada": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entrada_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "execucao_anterior_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gerado_em": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rota": {
+      "enum": [
+        "ANALISE_COMUM",
+        "COMPLEMENTACAO_DOCUMENTAL",
+        "REVISAO_ESPECIALIZADA",
+        "REVISAO_POR_INCERTEZA",
+        "FORA_ESCOPO",
+        "FALHA_TECNICA"
+      ]
+    },
+    "situacao_painel": {
+      "enum": [
+        "AGUARDANDO_ANALISTA",
+        "AGUARDANDO_SOLICITACAO_COMPLEMENTO",
+        "AGUARDANDO_ENCAMINHAMENTO_ESPECIALISTA",
+        "AGUARDANDO_ANALISE_MANUAL",
+        "FALHA_TECNICA",
+        "DECISAO_HUMANA_REGISTRADA"
+      ]
+    },
+    "resumo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidencias_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "regras_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "modulos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "documentacao",
+        "triagem",
+        "parecer",
+        "recomendacao"
+      ],
+      "properties": {
+        "documentacao": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "estado",
+            "motivo_nao_execucao",
+            "saida"
+          ],
+          "properties": {
+            "estado": {
+              "enum": [
+                "EXECUTADO",
+                "NAO_EXECUTADO",
+                "FALHA"
+              ]
+            },
+            "motivo_nao_execucao": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "saida": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "caso_id",
+                    "modulo",
+                    "versao_contrato",
+                    "status_execucao",
+                    "justificativa",
+                    "evidencias_ids",
+                    "regras_ids",
+                    "lacunas",
+                    "conflitos",
+                    "proximas_acoes",
+                    "requer_decisao_humana",
+                    "situacao_documental",
+                    "verificacoes",
+                    "pendencias",
+                    "observacoes"
+                  ],
+                  "properties": {
+                    "caso_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "modulo": {
+                      "const": "documentacao"
+                    },
+                    "versao_contrato": {
+                      "const": "0.2.0"
+                    },
+                    "status_execucao": {
+                      "enum": [
+                        "CONCLUIDO",
+                        "INSUFICIENTE",
+                        "FORA_ESCOPO",
+                        "ENTRADA_INVALIDA",
+                        "ERRO_EXECUCAO"
+                      ]
+                    },
+                    "justificativa": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidencias_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "regras_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lacunas": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "conflitos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "proximas_acoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "descricao",
+                          "responsavel",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "responsavel": {
+                            "const": "ANALISTA_HUMANO"
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "requer_decisao_humana": {
+                      "const": true
+                    },
+                    "situacao_documental": {
+                      "enum": [
+                        "COMPLETA",
+                        "PENDENTE",
+                        "INDETERMINADA",
+                        null
+                      ]
+                    },
+                    "verificacoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "criterio_id",
+                          "resultado",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "criterio_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "resultado": {
+                            "enum": [
+                              "ATENDIDO",
+                              "NAO_ATENDIDO",
+                              "DESCONHECIDO",
+                              "NAO_APLICAVEL"
+                            ]
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "pendencias": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "observacoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "triagem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "estado",
+            "motivo_nao_execucao",
+            "saida"
+          ],
+          "properties": {
+            "estado": {
+              "enum": [
+                "EXECUTADO",
+                "NAO_EXECUTADO",
+                "FALHA"
+              ]
+            },
+            "motivo_nao_execucao": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "saida": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "caso_id",
+                    "modulo",
+                    "versao_contrato",
+                    "status_execucao",
+                    "justificativa",
+                    "evidencias_ids",
+                    "regras_ids",
+                    "lacunas",
+                    "conflitos",
+                    "proximas_acoes",
+                    "requer_decisao_humana",
+                    "encaminhamento",
+                    "gatilhos",
+                    "achados_secundarios"
+                  ],
+                  "properties": {
+                    "caso_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "modulo": {
+                      "const": "triagem"
+                    },
+                    "versao_contrato": {
+                      "const": "0.2.0"
+                    },
+                    "status_execucao": {
+                      "enum": [
+                        "CONCLUIDO",
+                        "INSUFICIENTE",
+                        "FORA_ESCOPO",
+                        "ENTRADA_INVALIDA",
+                        "ERRO_EXECUCAO"
+                      ]
+                    },
+                    "justificativa": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidencias_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "regras_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lacunas": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "conflitos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "proximas_acoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "descricao",
+                          "responsavel",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "responsavel": {
+                            "const": "ANALISTA_HUMANO"
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "requer_decisao_humana": {
+                      "const": true
+                    },
+                    "encaminhamento": {
+                      "enum": [
+                        "FORA_ESCOPO",
+                        "REVISAO_ESPECIALIZADA",
+                        "REVISAO_POR_INCERTEZA",
+                        "COMPLEMENTACAO_DOCUMENTAL",
+                        "ANALISE_COMUM",
+                        null
+                      ]
+                    },
+                    "gatilhos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "achados_secundarios": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "parecer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "estado",
+            "motivo_nao_execucao",
+            "saida"
+          ],
+          "properties": {
+            "estado": {
+              "enum": [
+                "EXECUTADO",
+                "NAO_EXECUTADO",
+                "FALHA"
+              ]
+            },
+            "motivo_nao_execucao": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "saida": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "caso_id",
+                    "modulo",
+                    "versao_contrato",
+                    "status_execucao",
+                    "justificativa",
+                    "evidencias_ids",
+                    "regras_ids",
+                    "lacunas",
+                    "conflitos",
+                    "proximas_acoes",
+                    "requer_decisao_humana",
+                    "resumo",
+                    "afirmacoes",
+                    "analise_cobertura",
+                    "inconsistencias",
+                    "limitacoes",
+                    "conclusao",
+                    "verificacoes_humanas"
+                  ],
+                  "properties": {
+                    "caso_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "modulo": {
+                      "const": "parecer"
+                    },
+                    "versao_contrato": {
+                      "const": "0.2.0"
+                    },
+                    "status_execucao": {
+                      "enum": [
+                        "CONCLUIDO",
+                        "INSUFICIENTE",
+                        "FORA_ESCOPO",
+                        "ENTRADA_INVALIDA",
+                        "ERRO_EXECUCAO"
+                      ]
+                    },
+                    "justificativa": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidencias_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "regras_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lacunas": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "conflitos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "proximas_acoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "descricao",
+                          "responsavel",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "responsavel": {
+                            "const": "ANALISTA_HUMANO"
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "requer_decisao_humana": {
+                      "const": true
+                    },
+                    "resumo": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "afirmacoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "texto",
+                          "tipo",
+                          "evidencias_ids",
+                          "regras_ids",
+                          "formula"
+                        ],
+                        "properties": {
+                          "texto": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "tipo": {
+                            "enum": [
+                              "FATO",
+                              "CALCULO",
+                              "INFERENCIA"
+                            ]
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "formula": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "analise_cobertura": {
+                      "enum": [
+                        "SUSTENTADA_PELAS_REGRAS_FORNECIDAS",
+                        "CONTRADITA_PELAS_REGRAS_FORNECIDAS",
+                        "NAO_VERIFICAVEL",
+                        null
+                      ]
+                    },
+                    "inconsistencias": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "limitacoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "conclusao": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "verificacoes_humanas": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "descricao",
+                          "responsavel",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "responsavel": {
+                            "const": "ANALISTA_HUMANO"
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "recomendacao": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "estado",
+            "motivo_nao_execucao",
+            "saida"
+          ],
+          "properties": {
+            "estado": {
+              "enum": [
+                "EXECUTADO",
+                "NAO_EXECUTADO",
+                "FALHA"
+              ]
+            },
+            "motivo_nao_execucao": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "saida": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "caso_id",
+                    "modulo",
+                    "versao_contrato",
+                    "status_execucao",
+                    "justificativa",
+                    "evidencias_ids",
+                    "regras_ids",
+                    "lacunas",
+                    "conflitos",
+                    "proximas_acoes",
+                    "requer_decisao_humana",
+                    "recomendacao",
+                    "motivos",
+                    "criterios_verificados",
+                    "decisao_executada"
+                  ],
+                  "properties": {
+                    "caso_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "modulo": {
+                      "const": "recomendacao"
+                    },
+                    "versao_contrato": {
+                      "const": "0.2.0"
+                    },
+                    "status_execucao": {
+                      "enum": [
+                        "CONCLUIDO",
+                        "INSUFICIENTE",
+                        "FORA_ESCOPO",
+                        "ENTRADA_INVALIDA",
+                        "ERRO_EXECUCAO"
+                      ]
+                    },
+                    "justificativa": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "evidencias_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "regras_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lacunas": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "conflitos": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "campo",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "campo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "proximas_acoes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "codigo",
+                          "descricao",
+                          "responsavel",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "codigo": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "responsavel": {
+                            "const": "ANALISTA_HUMANO"
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "requer_decisao_humana": {
+                      "const": true
+                    },
+                    "recomendacao": {
+                      "enum": [
+                        "RECOMENDAR_APROVACAO",
+                        "REVISAO_HUMANA",
+                        null
+                      ]
+                    },
+                    "motivos": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "REGRA_AUSENTE",
+                          "EVIDENCIA_INSUFICIENTE",
+                          "CONFLITO",
+                          "CRITERIO_NAO_ATENDIDO",
+                          "EXCECAO",
+                          "FORA_ESCOPO",
+                          "ENTRADA_INVALIDA",
+                          "ERRO_EXECUCAO"
+                        ]
+                      }
+                    },
+                    "criterios_verificados": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "criterio_id",
+                          "resultado",
+                          "descricao",
+                          "evidencias_ids",
+                          "regras_ids"
+                        ],
+                        "properties": {
+                          "criterio_id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "resultado": {
+                            "enum": [
+                              "ATENDIDO",
+                              "NAO_ATENDIDO",
+                              "DESCONHECIDO",
+                              "NAO_APLICAVEL"
+                            ]
+                          },
+                          "descricao": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "evidencias_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "regras_ids": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "decisao_executada": {
+                      "const": false
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "proxima_acao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "codigo",
+        "descricao",
+        "responsavel",
+        "evidencias_ids",
+        "regras_ids"
+      ],
+      "properties": {
+        "codigo": {
+          "enum": [
+            "REVISAR_E_DECIDIR",
+            "SOLICITAR_COMPLEMENTO",
+            "ENCAMINHAR_ESPECIALISTA",
+            "ENCAMINHAR_ANALISE_MANUAL",
+            "CORRIGIR_E_REPROCESSAR",
+            "REGISTRAR_NO_SISTEMA"
+          ]
+        },
+        "descricao": {
+          "type": "string",
+          "minLength": 1
+        },
+        "responsavel": {
+          "const": "ANALISTA_HUMANO"
+        },
+        "evidencias_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "regras_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "requer_decisao_humana": {
+      "const": true
+    },
+    "decisao_humana": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decisao_id",
+            "origem",
+            "analista_id",
+            "registrada_em",
+            "execucao_id",
+            "entrada_sha256",
+            "acao",
+            "concorda_com_sugestao",
+            "motivo",
+            "valor_aprovado_humano"
+          ],
+          "properties": {
+            "decisao_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "origem": {
+              "const": "REGISTRO_HUMANO"
+            },
+            "analista_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "registrada_em": {
+              "type": "string",
+              "minLength": 1
+            },
+            "execucao_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "entrada_sha256": {
+              "type": "string",
+              "minLength": 1
+            },
+            "acao": {
+              "enum": [
+                "APROVAR",
+                "SOLICITAR_COMPLEMENTO",
+                "ENCAMINHAR_ANALISE_MANUAL",
+                "ENCAMINHAR_ESPECIALISTA"
+              ]
+            },
+            "concorda_com_sugestao": {
+              "type": "boolean"
+            },
+            "motivo": {
+              "type": "string",
+              "minLength": 1
+            },
+            "valor_aprovado_humano": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "pagamento_executado_pelo_agente": {
+      "const": false
+    }
+  }
+}

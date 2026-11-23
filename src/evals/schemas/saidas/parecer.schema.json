@@ -1,0 +1,386 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fde/saidas/parecer.schema.json",
+  "title": "Saída parecer 0.2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "caso_id",
+    "modulo",
+    "versao_contrato",
+    "status_execucao",
+    "justificativa",
+    "evidencias_ids",
+    "regras_ids",
+    "lacunas",
+    "conflitos",
+    "proximas_acoes",
+    "requer_decisao_humana",
+    "resumo",
+    "afirmacoes",
+    "analise_cobertura",
+    "inconsistencias",
+    "limitacoes",
+    "conclusao",
+    "verificacoes_humanas"
+  ],
+  "properties": {
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modulo": {
+      "const": "parecer"
+    },
+    "versao_contrato": {
+      "const": "0.2.0"
+    },
+    "status_execucao": {
+      "enum": [
+        "CONCLUIDO",
+        "INSUFICIENTE",
+        "FORA_ESCOPO",
+        "ENTRADA_INVALIDA",
+        "ERRO_EXECUCAO"
+      ]
+    },
+    "justificativa": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidencias_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "regras_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "lacunas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "conflitos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "proximas_acoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "descricao",
+          "responsavel",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "responsavel": {
+            "const": "ANALISTA_HUMANO"
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "requer_decisao_humana": {
+      "const": true
+    },
+    "resumo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "afirmacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "texto",
+          "tipo",
+          "evidencias_ids",
+          "regras_ids",
+          "formula"
+        ],
+        "properties": {
+          "texto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tipo": {
+            "enum": [
+              "FATO",
+              "CALCULO",
+              "INFERENCIA"
+            ]
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "formula": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "analise_cobertura": {
+      "enum": [
+        "SUSTENTADA_PELAS_REGRAS_FORNECIDAS",
+        "CONTRADITA_PELAS_REGRAS_FORNECIDAS",
+        "NAO_VERIFICAVEL",
+        null
+      ]
+    },
+    "inconsistencias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "limitacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "conclusao": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "verificacoes_humanas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "descricao",
+          "responsavel",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "responsavel": {
+            "const": "ANALISTA_HUMANO"
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

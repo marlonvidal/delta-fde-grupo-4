@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fde/caso.schema.json",
+  "title": "Caso de avaliação FDE v0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "versao_dataset",
+    "caso_id",
+    "titulo",
+    "origem",
+    "particao",
+    "status_revisao",
+    "derivado_falha_observada",
+    "tags",
+    "entrada",
+    "esperado",
+    "justificativa"
+  ],
+  "properties": {
+    "versao_dataset": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "titulo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "justificativa": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origem": {
+      "enum": [
+        "SINTETICO"
+      ]
+    },
+    "particao": {
+      "enum": [
+        "DESENVOLVIMENTO",
+        "RESERVADO",
+        "REGRESSAO"
+      ]
+    },
+    "status_revisao": {
+      "enum": [
+        "PENDENTE_REVISAO_GRUPO",
+        "VALIDADO_PELO_GRUPO",
+        "APROVADO_POR_ALEX"
+      ]
+    },
+    "derivado_falha_observada": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "entrada": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "caso_id",
+        "instante_analise",
+        "dados",
+        "evidencias",
+        "regras",
+        "configuracao"
+      ],
+      "properties": {
+        "caso_id": {
+          "type": "string"
+        },
+        "instante_analise": {
+          "type": "string"
+        },
+        "dados": {
+          "type": "object"
+        },
+        "evidencias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "origem",
+              "disponivel_em",
+              "conteudo"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "origem": {
+                "type": "string"
+              },
+              "disponivel_em": {
+                "type": "string"
+              },
+              "conteudo": {}
+            }
+          }
+        },
+        "regras": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "versao",
+              "texto",
+              "escopo",
+              "origem",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "versao": {
+                "type": "string"
+              },
+              "texto": {
+                "type": "string"
+              },
+              "escopo": {
+                "type": "string"
+              },
+              "origem": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "SIMULADA",
+                  "VALIDADA_PELO_GRUPO"
+                ]
+              }
+            }
+          }
+        },
+        "configuracao": {
+          "type": "object",
+          "required": [
+            "versao_contrato",
+            "modo",
+            "moeda",
+            "escopo_regras",
+            "regras_aplicaveis"
+          ],
+          "properties": {
+            "versao_contrato": {
+              "type": "string"
+            },
+            "modo": {
+              "enum": [
+                "METADADOS",
+                "MULTIMODAL"
+              ]
+            },
+            "moeda": {
+              "const": "BRL"
+            },
+            "escopo_regras": {
+              "type": "object"
+            },
+            "regras_aplicaveis": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "esperado": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "documentacao",
+        "triagem",
+        "parecer",
+        "recomendacao"
+      ],
+      "properties": {
+        "documentacao": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status_execucao",
+            "campos_iguais",
+            "checagens_humanas",
+            "falhas_criticas"
+          ],
+          "properties": {
+            "status_execucao": {
+              "enum": [
+                "CONCLUIDO",
+                "INSUFICIENTE",
+                "FORA_ESCOPO",
+                "ENTRADA_INVALIDA",
+                "ERRO_EXECUCAO"
+              ]
+            },
+            "campos_iguais": {
+              "type": "object"
+            },
+            "checagens_humanas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "falhas_criticas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "triagem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status_execucao",
+            "campos_iguais",
+            "checagens_humanas",
+            "falhas_criticas"
+          ],
+          "properties": {
+            "status_execucao": {
+              "enum": [
+                "CONCLUIDO",
+                "INSUFICIENTE",
+                "FORA_ESCOPO",
+                "ENTRADA_INVALIDA",
+                "ERRO_EXECUCAO"
+              ]
+            },
+            "campos_iguais": {
+              "type": "object"
+            },
+            "checagens_humanas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "falhas_criticas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "parecer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status_execucao",
+            "campos_iguais",
+            "checagens_humanas",
+            "falhas_criticas"
+          ],
+          "properties": {
+            "status_execucao": {
+              "enum": [
+                "CONCLUIDO",
+                "INSUFICIENTE",
+                "FORA_ESCOPO",
+                "ENTRADA_INVALIDA",
+                "ERRO_EXECUCAO"
+              ]
+            },
+            "campos_iguais": {
+              "type": "object"
+            },
+            "checagens_humanas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "falhas_criticas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "recomendacao": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status_execucao",
+            "campos_iguais",
+            "checagens_humanas",
+            "falhas_criticas"
+          ],
+          "properties": {
+            "status_execucao": {
+              "enum": [
+                "CONCLUIDO",
+                "INSUFICIENTE",
+                "FORA_ESCOPO",
+                "ENTRADA_INVALIDA",
+                "ERRO_EXECUCAO"
+              ]
+            },
+            "campos_iguais": {
+              "type": "object"
+            },
+            "checagens_humanas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "falhas_criticas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

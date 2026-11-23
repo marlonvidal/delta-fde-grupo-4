@@ -1,0 +1,33 @@
+{
+  "caso_id": "FDE-005",
+  "modulo": "documentacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "FORA_ESCOPO",
+  "justificativa": "Valor acima de 5000 está fora do envelope dos módulos; não significa negativa de cobertura.",
+  "evidencias_ids": [
+    "E-SIN"
+  ],
+  "regras_ids": [
+    "R-ESCOPO"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "ENCAMINHAR_FORA_ESCOPO",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Encaminhar a analista responsável por casos acima de R$ 5.000; não negar o sinistro.",
+      "evidencias_ids": [
+        "E-SIN"
+      ],
+      "regras_ids": [
+        "R-ESCOPO"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "situacao_documental": null,
+  "verificacoes": [],
+  "pendencias": [],
+  "observacoes": []
+}

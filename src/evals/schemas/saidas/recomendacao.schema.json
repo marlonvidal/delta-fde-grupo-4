@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/fde/saidas/recomendacao.schema.json",
+  "title": "Saída recomendacao 0.2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "caso_id",
+    "modulo",
+    "versao_contrato",
+    "status_execucao",
+    "justificativa",
+    "evidencias_ids",
+    "regras_ids",
+    "lacunas",
+    "conflitos",
+    "proximas_acoes",
+    "requer_decisao_humana",
+    "recomendacao",
+    "motivos",
+    "criterios_verificados",
+    "decisao_executada"
+  ],
+  "properties": {
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modulo": {
+      "const": "recomendacao"
+    },
+    "versao_contrato": {
+      "const": "0.2.0"
+    },
+    "status_execucao": {
+      "enum": [
+        "CONCLUIDO",
+        "INSUFICIENTE",
+        "FORA_ESCOPO",
+        "ENTRADA_INVALIDA",
+        "ERRO_EXECUCAO"
+      ]
+    },
+    "justificativa": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidencias_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "regras_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "lacunas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "conflitos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "campo",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "campo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "proximas_acoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "descricao",
+          "responsavel",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "responsavel": {
+            "const": "ANALISTA_HUMANO"
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "requer_decisao_humana": {
+      "const": true
+    },
+    "recomendacao": {
+      "enum": [
+        "RECOMENDAR_APROVACAO",
+        "REVISAO_HUMANA",
+        null
+      ]
+    },
+    "motivos": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "REGRA_AUSENTE",
+          "EVIDENCIA_INSUFICIENTE",
+          "CONFLITO",
+          "CRITERIO_NAO_ATENDIDO",
+          "EXCECAO",
+          "FORA_ESCOPO",
+          "ENTRADA_INVALIDA",
+          "ERRO_EXECUCAO"
+        ]
+      }
+    },
+    "criterios_verificados": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "criterio_id",
+          "resultado",
+          "descricao",
+          "evidencias_ids",
+          "regras_ids"
+        ],
+        "properties": {
+          "criterio_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "resultado": {
+            "enum": [
+              "ATENDIDO",
+              "NAO_ATENDIDO",
+              "DESCONHECIDO",
+              "NAO_APLICAVEL"
+            ]
+          },
+          "descricao": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "regras_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "decisao_executada": {
+      "const": false
+    }
+  }
+}

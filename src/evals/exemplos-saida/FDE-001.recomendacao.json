@@ -1,0 +1,69 @@
+{
+  "caso_id": "FDE-001",
+  "modulo": "recomendacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "CONCLUIDO",
+  "justificativa": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "DECIDIR_E_CALCULAR",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "recomendacao": "RECOMENDAR_APROVACAO",
+  "decisao_executada": false,
+  "motivos": [],
+  "criterios_verificados": [
+    {
+      "criterio_id": "ELEGIBILIDADE",
+      "resultado": "ATENDIDO",
+      "descricao": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ]
+}
