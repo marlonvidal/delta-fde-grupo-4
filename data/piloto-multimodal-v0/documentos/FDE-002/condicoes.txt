@@ -1,0 +1,5 @@
+REGRAS SINTÉTICAS — NÃO SÃO CONDIÇÕES REAIS DE SEGURO
+Identificador: R-COB
+Cobertura deste exercício: dano em vidro, com evento dentro da vigência da apólice e sinistro vinculado a ela.
+Os limites de início e fim da vigência são inclusivos. Não há outras exclusões nesta regra simulada.
+Esta regra não calcula indenização e não dispensa os documentos exigidos.

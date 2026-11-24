@@ -1,0 +1,10 @@
+DOCUMENTO SINTÉTICO — ORÇAMENTO DE TESTE, SEM VALIDADE COMERCIAL
+Orçamento: ORC-013
+Sinistro vinculado: SIN-013
+Oficina: OFI-013 (fictícia)
+Apólice de referência: AP-013
+Serviço: substituição de para-brisa automotivo
+Valor total orçado (BRL): 1800.00
+Moeda: BRL
+Completude declarada: orçamento completo para o exercício.
+Este documento não aprova cobertura, não determina indenização e não autoriza pagamento.

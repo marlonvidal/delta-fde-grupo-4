@@ -1,0 +1,23 @@
+{
+  "versao": "0.2.0",
+  "origem": "SINTETICO",
+  "status": "IMPORTADO_LANGFUSE_PENDENTE_REVISAO",
+  "casos": 10,
+  "documentos": 39,
+  "imagens_previstas": 9,
+  "imagens_presentes": 9,
+  "upload_langfuse_realizado": true,
+  "chamadas_modelo_avaliado": 0,
+  "particao": "DESENVOLVIMENTO",
+  "limitacoes": [
+    "Variações de uma mesma família; não usar como avaliação independente.",
+    "Distribuição para cobertura, não prevalência operacional.",
+    "Gabaritos provisórios sujeitos a revisão; fotos recebidas, com revisão humana pendente."
+  ],
+  "langfuse": {
+    "dataset_id": "cmwtzx5gf03ewad0jsmxbeqd9",
+    "dataset_name": "amparo-ampliacao-multimodal-v0",
+    "url": "https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwtzx5gf03ewad0jsmxbeqd9",
+    "verificado_em": "2026-11-24T01:09:25.824052+00:00"
+  }
+}
