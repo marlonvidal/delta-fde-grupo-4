@@ -1,10 +1,10 @@
-# Ampliação documental e multimodal — v0.2.0
+# Ampliação documental e multimodal
 
-Rascunho local: **10 novos casos (MMV-006 a MMV-015)**, 39 documentos e 9 imagens recebidas. Somados ao piloto anterior, são 15 casos preparados. Imagens fornecidas por Alex; nenhuma chamada ao agente.
+Dez casos de desenvolvimento (MMV-006 a MMV-015), 39 documentos TXT e nove imagens PNG. Gabarito 0.2.2: status por módulo e revisão visual/documental aceitos por Alex e sincronizados no Langfuse em 24/11/2026. Nenhum agente foi executado.
 
-## Cobertura proposta
+## Cobertura
 
-| Caso | Condição | Rota esperada | Imagem planejada |
+| Caso | Condição | Rota esperada | Evidência visual revisada |
 |---|---|---|---|
 | MMV-006 | Valor exatamente no limite de escopo | ANALISE_COMUM | adequada |
 | MMV-007 | Valor um centavo abaixo do limite | ANALISE_COMUM | adequada |
@@ -17,28 +17,25 @@ Rascunho local: **10 novos casos (MMV-006 a MMV-015)**, 39 documentos e 9 imagen
 | MMV-014 | Sinalização humana de suspeita | REVISAO_ESPECIALIZADA | adequada |
 | MMV-015 | Conflito de valor e foto ausente | REVISAO_POR_INCERTEZA | ausente |
 
-## Revisão e execução
 
-1. Revisar documentos, regras simuladas e gabaritos em `revisao.html`. Confirmar especialmente evento fora da vigência na fila comum com recomendação de revisão humana, e precedência de incerteza sobre complementação.
-2. As nove imagens já foram recebidas. Não confundir alvo do prompt com rótulo confirmado.
-3. Conferir cada imagem e revisar o gabarito correspondente. Registrar revisão humana antes de usar como referência validada.
-4. Rodar `python3 scripts/validar_ampliacao_multimodal.py`. O comando padrão valida preparação; `--pronto` exige imagens e revisão aprovadas e bloqueia este rascunho.
-5. Importação autorizada por Alex e conferida pela API. Manter `input`, `expectedOutput` e `metadata` separados. O input continua no formato do piloto. O gabarito usa critérios parciais por módulo e precisa de alinhamento com a saída de Samuel.
+## Regras e execução
 
-## Uso dos dados
+Evento fora da vigência (MMV-010) mantém análise comum, parecer apontando cobertura contradita e recomendação de revisão humana, sem negativa. Após especialista (MMV-014), o parecer volta ao analista; não há retomada automática do agente. Em MMV-015, o conflito de valor tem precedência sobre a foto ausente, que permanece como pendência secundária.
 
-Todos os casos são de desenvolvimento, da família de variações FDE-001. Não distribuir pares quase iguais entre desenvolvimento e teste: isso inflaria os resultados. Casos de avaliação reservada deverão usar novas combinações e materiais independentes e revisão humana. O volume não permite inferir desempenho operacional ou as taxas de fotos ruins/ausentes da reunião.
+Alex confirmou a inadequação de MMV-012 por desfoque e MMV-013 por subexposição. As demais fotos mostram dano em vidro com qualidade adequada; documentos foram considerados coerentes com os cenários. Ausência de foto em MMV-015 é intencional. Revisão de Alex não equivale a revisão independente ou resultado do agente.
 
-Somente `input` segue para o agente. Títulos, prompts, alvo visual, resultado esperado e página de revisão são materiais do avaliador. Caminhos locais de imagem precisam ser resolvidos pelo executor para bytes; falta do arquivo previsto bloqueia a execução. Em MMV-015 o inventário vazio é ausência intencional no caso.
+Somente `input` segue para o agente. `avaliador/verdade.jsonl` contém critérios parciais e a seleção dos módulos do fluxo; não é uma resposta completa produzida. Prompts, títulos e rótulos são restritos ao avaliador. Caminhos de imagens precisam ser resolvidos para bytes; falha de acesso não é ausência de foto do segurado. A integração depende de extração/normalização conforme o [contrato de ingestão](../../docs/contratos/06-chat-ingestao-documental.md).
 
-## Identificadores
+## Validação
 
-O prefixo MMV distingue este lote do catálogo anterior FDE-006 a FDE-030, que contém outros cenários. A família de origem FDE-001 identifica o template usado, não equivalência entre os casos.
+`python3 scripts/validar_ampliacao_multimodal.py --pronto`
 
-## Recebimento das imagens
+Verifica arquivos, hashes, vínculos, critérios e registro de revisão. O estado pronto significa fixtures disponíveis, não suporte implementado no agente.
 
-Nove PNGs copiados de Downloads, com originais preservados. Corrigidos os nomes com ponto extra (MMV-007) e extensão duplicada (MMV-010). Hashes registrados. Inspeção do assistente identificou sete fotos com trincas visíveis, uma fortemente desfocada e uma muito escura. Revisão humana dos rótulos continua pendente. Lote importado no Langfuse; revisão humana dos gabaritos pendente.
+## Uso e identificadores
 
-## Estado atual no Langfuse
+Todos os casos derivam da mesma família de desenvolvimento. Não separar variantes quase idênticas entre desenvolvimento e avaliação reservada. O prefixo MMV distingue esses cenários dos antigos FDE-006 a FDE-030, que têm outros significados. O volume não representa taxas operacionais de foto ruim/ausente ou desempenho real.
 
-Importação conferida pela API: 10 casos. Dataset: [amparo-ampliacao-multimodal-v0](https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwtzx5gf03ewad0jsmxbeqd9). Identificadores de condições padronizados para `CONDICOES` e tipo `condicoes`. Gabaritos continuam pendentes de revisão humana; nenhum experimento do agente foi executado.
+## Langfuse
+
+[amparo-ampliacao-multimodal-v0](https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwtzx5gf03ewad0jsmxbeqd9). Critérios e aceite conferidos pela API; estado e datas no `manifesto.json`.

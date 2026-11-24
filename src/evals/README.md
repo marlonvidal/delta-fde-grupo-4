@@ -1,6 +1,6 @@
 # Dataset inicial de avaliações
 
-Versão 0.3.0 · 20/11/2026 · **Cenários aprovados por Alex em 20/11/2026**.
+Versão 0.3.1 · 24/11/2026 · **Cenários aprovados por Alex em 20/11/2026**.
 
 O lote tem 30 cenários sintéticos de desenvolvimento e quatro expectativas por cenário. Não é conjunto reservado, não deriva de falhas observadas e não contém resultados de agentes. Não substitui a exigência final de casos vindos de falhas observadas.
 
@@ -68,3 +68,7 @@ Os 30 cenários foram revisados e aprovados por Alex em 20/11/2026. Status: `APR
 ## Versão 0.3.0 — decisões de saída de Alex
 
 Contratos 0.2.0; schemas de saída em `schemas/saidas/` e 20 respostas de referência em `exemplos-saida/`. Veja o [guia de integração](../../docs/guia-integracao-avaliacoes.md). Sem negativa nem valor sugerido, com evidências por conclusão e próxima ação humana para impedimentos. Removida R-VAL. FDE-030 espera aprovação de elegibilidade se demais critérios atendidos; todos os demais rótulos permanecem. Os exemplos de resposta foram sincronizados. Nenhum exemplo foi gerado por execução de agente.
+
+## Versão 0.3.1 — vigência
+
+FDE-017 e FDE-018 seguem `ANALISE_COMUM`, com parecer de cobertura contradita e recomendação `REVISAO_HUMANA`, conforme decisão 2A confirmada em 24/11/2026. Demais fatos e expectativas foram preservados. Schemas de saída continuam 0.2.0 e regras preservam suas versões próprias; a revisão é do dataset.

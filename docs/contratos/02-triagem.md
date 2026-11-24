@@ -43,3 +43,7 @@ Unidade: caso. Matriz de confusão multiclasse, recall de revisão especializada
 **Falhas críticas propostas:** enviar à análise comum caso com gatilho especializado explícito; tratar score como fraude confirmada; executar encaminhamento externo ou decisão operacional fora deste contrato.
 
 **Pendências:** grupo validar nomes das filas, gatilhos e precedência. Sem regras completas, não rotular casos como análise comum apenas porque nenhum problema foi informado.
+
+## Vigência e fronteira do fluxo — decisão de 24/11/2026
+
+Evento comprovadamente fora da vigência segue `ANALISE_COMUM`, quando não houver condição de maior precedência, para parecer explicitando cobertura contradita e recomendação `REVISAO_HUMANA`. Não tratar esse impedimento como documento ausente que possa ser resolvido por reenvio. FDE-017/FDE-018 e MMV-010 foram alinhados à decisão 2A. O especialista devolve seu parecer ao analista, sem retomada automática (1A).

@@ -53,13 +53,13 @@ def main():
             assert len(entry['imagens'])==1
             img=next(i for i in images if i['caso_id']==cid)
             assert entry['imagens'][0]['arquivo']==img['arquivo_esperado']
-            assert img['status']=='DISPONIVEL_REVISAO_HUMANA_PENDENTE' and img['sha256']
+            assert img['status']=='APROVADA_REVISAO_HUMANA' and img['sha256']
             photo=local_path(img['arquivo_esperado'])
             assert photo.is_file() and photo.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
             assert hashlib.sha256(photo.read_bytes()).hexdigest()==img['sha256']
             assert local_path(img['prompt_arquivo']).is_file()
         expected=by_case[cid]
-        assert expected['metadata']['status_revisao']=='PENDENTE_REVISAO_MULTIMODAL'
+        assert expected['metadata']['status_revisao']=='APROVADO_REVISAO_HUMANA'
         flow=expected['expectedOutput']['fluxo_esperado']
         assert flow['decisao_humana_obrigatoria'] is True
         assert ('parecer' in flow['modulos_previstos'])==(flow['rota']=='ANALISE_COMUM')
@@ -74,7 +74,7 @@ def main():
     assert manifest['imagens_presentes']==4
     if manifest['upload_langfuse_realizado']:
         assert manifest['langfuse']['dataset_id'] and manifest['langfuse']['verificado_em']
-    print('OK: 5 casos, 19 documentos consistentes, gabarito separado e 4 imagens recebidas com hashes válidos. Revisão humana pendente; nenhuma execução multimodal do agente.')
+    print('OK: 5 casos, 19 documentos consistentes, gabarito separado e 4 imagens recebidas com hashes válidos. Revisão de Alex registrada; nenhuma execução multimodal do agente.')
 
 
 if __name__=='__main__':main()

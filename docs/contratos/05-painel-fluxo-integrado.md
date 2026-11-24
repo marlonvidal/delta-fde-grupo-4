@@ -8,7 +8,7 @@ Versão 0.1.0 · 23/11/2026 · complemento aos contratos individuais 0.2.0.
 
 **Recomendação de implementação deste contrato:** usar um snapshot consolidado produzido pelo orquestrador, com as respostas originais dos módulos e a situação do fluxo. Esse envelope não é uma quinta conclusão autônoma de IA. Estados de painel são derivados por regras e, posteriormente, por registros humanos autenticados.
 
-As rotas de incerteza e fora do escopo, já existentes nos contratos individuais, são encaminhadas para análise manual nesta proposta. O comportamento após revisão especializada continua pendente; não se presume aprovação, pagamento nem retorno automático.
+As rotas de incerteza e fora do escopo, já existentes nos contratos individuais, são encaminhadas para análise manual nesta proposta. Decisão 1A: após revisão especializada, o especialista registra o parecer e devolve ao analista, sem retomada automática do agente. Não se presume aprovação ou pagamento.
 
 ## Resposta consolidada
 
@@ -84,7 +84,33 @@ Nenhuma transação ou mensagem é executada por estes testes. Nenhum resultado 
 ## Pendências para integração
 
 - [ ] Samuel confirmar o mapeamento de estados no backend e painel.
-- [ ] Definir resultado e retomada após revisão especializada.
+- [x] Definir retorno após especialista: parecer ao analista, sem retomada automática (1A, 24/11/2026).
 - [ ] Confirmar com o grupo as rotas de incerteza e fora de escopo propostas aqui.
-- [ ] Definir comportamento para casos de vigência inválida: rótulos individuais 17/18 continuam preservados por aprovação anterior; não foram silenciosamente reclassificados.
+- [x] Evento fora da vigência mantém análise comum e recomendação humana (2A); FDE-017/FDE-018 alinhados ao MMV-010 em 24/11/2026.
 - [ ] Implementar eventos, concorrência e deduplicação das decisões humanas no sistema real.
+
+## Transições documentais para o LangGraph — complemento de 24/11/2026
+
+Tabela de especificação, sem grafo executável. A validação do desenho não atribui automaticamente suporte a formatos ou autorização para contato externo.
+
+| Origem / evento | Condição | Destino / comportamento | Situação |
+|---|---|---|---|
+| Chat recebe anexos | Mensagem/caso vinculados e bytes registrados | Ingestão, identificação de formato e extração; ainda sem conclusão de domínio | Envelope proposto no contrato 06 |
+| Ingestão conclui | Evidências acessíveis, fatos normalizados e inventário versionado | Conferência documental → triagem | Adaptador pendente |
+| Ingestão não consegue ler | Ilegibilidade, proteção, corrupção ou formato não suportado | Suspender análise dependente; registrar causa e ação humana a definir | Política específica pendente |
+| Ingestão falha tecnicamente | Timeout/ferramenta/infraestrutura | Falha técnica, sem resultado de domínio fabricado | Recuperação/idempotência pendentes |
+| Triagem escolhe análise comum | Regras da rota satisfeitas | Parecer → recomendação → revisão do analista | Já descrito no contrato |
+| Triagem escolhe complementação | Pendência confirmada, sem precedência superior | Encerrar passagem automática; analista decide solicitar documentos | Já descrito no contrato |
+| Chega complemento | Nova evidência, evento identificado e nova versão | Reexecutar conferência/triagem; avançar somente se nova rota comum | Exemplos INT-006/INT-007; backend pendente |
+| Triagem escolhe especialista | Sinalização humana/regra explícita | Encerrar passagem automática; encaminhamento humano | Parecer devolvido ao analista; sem retomada automática |
+| Especialista devolve caso | Identidade, conclusão e autoridade a definir | Especialista registra parecer e devolve ao analista; agente não retoma automaticamente | Decisão 1A confirmada; persistência no backend pendente |
+| Triagem escolhe incerteza | Conflito/regra ou dado desconhecido | Análise humana; preservar pendências secundárias | Retomada após resolução a definir |
+| Triagem escolhe fora do escopo | Limite violado | Encaminhamento humano; não continuar no ramo de aprovação | Retomada/alçada fora do MVP a definir |
+| Qualquer evidência relevante muda | Versão atual diferente da análise/decisão | Invalidar autorização para usar conclusão antiga; preservar histórico | Verificação de concorrência no backend pendente |
+| Analista decide | Backend autentica ator e vincula ação à versão/hash atuais | Registrar decisão humana; nunca pagamento pelo agente | Integração externa não implementada |
+
+O identificador de execução não é o ID do caso: variantes de formato e reentradas precisam de IDs de execução/evento próprios. Na repetição de um evento já recebido, o backend deve deduplicar; na chegada de evidência nova, deve criar versão nova. A forma de implementar checkpoints, lock de versão e persistência deve ser acordada com Samuel.
+
+## Fronteira do produto — 24/11/2026
+
+O ponto de entrada operacional é um sinistro já aberto no sistema existente. Chat/upload são interfaces do demonstrador, não uma implementação de abertura de sinistros. O sistema real fornece os anexos ao contrato de ingestão; a máquina de estados analisa o caso. Após especialista, não há reinício automático do agente. Resolver uma incerteza e autorizar nova execução ainda requer definição própria.

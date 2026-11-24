@@ -1,6 +1,6 @@
 # Guia de integração para Samuel
 
-20/11/2026 · contratos de saída **0.2.0** · dataset **0.3.0**.
+20/11/2026 · contratos de saída **0.2.0** · dataset **0.3.1**.
 
 ## Decisões de Alex
 
@@ -75,7 +75,7 @@ Para devolver uma versão testável: informar comando ou interface, módulos dis
 
 ## Mudança desta versão
 
-Removido campo `valor_recomendado` e regra simulada `R-VAL`. FDE-030 agora espera recomendação de elegibilidade quando todos os demais critérios estão satisfeitos; falta de cálculo não é impedimento. Contratos, expectativas, catálogo e entradas do ensaio manual foram atualizados juntos. Os demais rótulos foram preservados, incluindo FDE-017 e FDE-018 conforme aprovação anterior de Alex.
+Removido campo `valor_recomendado` e regra simulada `R-VAL`. FDE-030 agora espera recomendação de elegibilidade quando todos os demais critérios estão satisfeitos; falta de cálculo não é impedimento. Contratos, expectativas, catálogo e entradas do ensaio manual foram atualizados juntos. Na revisão 0.3.0, os demais rótulos foram preservados; FDE-017/FDE-018 foram posteriormente alinhados à decisão 2A no dataset 0.3.1.
 
 
 ## Complemento de 23/11/2026 — fluxo aceito e painel consolidado
@@ -84,7 +84,7 @@ Conforme informado por Alex, o grupo aceitou o fluxo de Samuel. Usar o [contrato
 
 No teste individual, um módulo recebe a entrada e produz sua saída mesmo quando outro módulo interromperia o fluxo. No teste integrado, a triagem decide o ramo: complementação e revisão especializada não chamam parecer/recomendação nessa passagem. Incerteza e fora do escopo seguem para análise manual na proposta registrada. Não execução por rota é estado do slot do orquestrador, não erro ou abstenção do agente.
 
-O orquestrador monta o painel com as saídas originais e referências. Não fabricar respostas dos módulos pulados. Registro humano pertence ao backend autenticado, não ao modelo. Retorno de documentos cria nova versão e nova passagem ligada à anterior. O pós-revisão especializada ainda precisa ser definido.
+O orquestrador monta o painel com as saídas originais e referências. Não fabricar respostas dos módulos pulados. Registro humano pertence ao backend autenticado, não ao modelo. Retorno de documentos cria nova versão e nova passagem ligada à anterior. Após especialista, o parecer volta ao analista sem retomada automática (1A).
 
 Executar também:
 
@@ -93,3 +93,15 @@ python3 scripts/validar_fluxos.py
 ```
 
 Os cenários são fixtures, sem orquestrador conectado ou agente executado. Testes de pagamento avaliam apenas precondições sintéticas; não implementam pagamento ou autorização real.
+
+## Integração documental pelo chat — 24/11/2026
+
+A especificação dos cenários orienta a implementação no LangGraph. Os 15 casos multimodais não possuem o mesmo envelope dos 30 casos individuais: primeiro realizar ingestão/normalização conforme o [contrato de chat](contratos/06-chat-ingestao-documental.md). Sem isso, os validadores existentes de domínio não podem ser aplicados diretamente a `input.contexto/documentos/imagens`.
+
+Usar o [catálogo técnico](auditoria/catalogo-15-casos.md) e a [auditoria](auditoria/contratos-e-cenarios.md). Os dez casos MMV têm critérios parciais e status aceitos por Alex em 24/11/2026, agora explícitos no gabarito 0.2.2. Os critérios continuam parciais; a revisão visual/documental por Alex foi registrada separadamente. Os cinco casos FDE têm expectativas individuais para módulos que podem ser pulados no fluxo. Nenhum desses gabaritos deve ser fornecido ao modelo na execução.
+
+Executar também `python3 scripts/validar_contratos_documentais.py`. Os schemas novos são propostas aditivas 0.1.0; os schemas de saída 0.2.0 e o painel 0.1.0 permanecem preservados. Não inferir que upload bem-sucedido ao Langfuse demonstra extração, normalização ou execução end-to-end.
+
+### Decisões aplicadas em 24/11/2026
+
+1A: especialista → parecer ao analista, sem retomada automática. 2A: evento fora da vigência → análise comum, parecer sobre o impedimento e revisão humana. 3: status MMV aceitos por Alex. 4B: PDF textual/escaneado, PNG/JPG, DOCX e XLSX no piloto; suporte depende de implementação. O produto recebe sinistros já abertos; chat/upload são facilitação da demonstração. Contratos de ingestão permanecem proposta técnica aditiva; limites e extração parcial não foram decididos por esses aceites.

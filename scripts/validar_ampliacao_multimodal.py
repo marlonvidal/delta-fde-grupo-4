@@ -37,7 +37,7 @@ def validate(ready=False):
             image=by_image[cid]
             assert safe(image['prompt_arquivo']).is_file()
             assert inp['imagens'][0]['arquivo']==image['arquivo_esperado']
-            if image['status']=='DISPONIVEL_REVISAO_HUMANA_PENDENTE':
+            if image['status'] in ['DISPONIVEL_REVISAO_HUMANA_PENDENTE','APROVADA_REVISAO_HUMANA']:
                 file=safe(image['arquivo_esperado'])
                 assert file.read_bytes()[:8]==b'\x89PNG\r\n\x1a\n'
                 assert hashlib.sha256(file.read_bytes()).hexdigest()==image['sha256']
@@ -65,7 +65,7 @@ def validate(ready=False):
     assert 'suspeita de fraude: sim' in text('MMV-014','aviso')
     assert '2300.00' in text('MMV-015','aviso') and '1800.00' in text('MMV-015','orcamento')
     assert targets['MMV-015']['expectedOutput']['fluxo_esperado']['rota']=='REVISAO_POR_INCERTEZA'
-    print('OK: 10 casos, 39 documentos e 9 prompts consistentes. '+('Pronto para execução.' if ready else 'Rascunho validado; revisão humana pendente.'))
+    print('OK: 10 casos, 39 documentos e 9 prompts consistentes. '+('Pronto para execução.' if ready else 'Lote validado; revisão de Alex registrada.'))
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--pronto',action='store_true')

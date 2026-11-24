@@ -29,7 +29,7 @@ python3 scripts/validar_fluxos.py
 
 Verifica estrutura, referências, consistência de rota, não execução dos ramos, versões/hashes de reentrada, vínculo da decisão humana, preservação de sugestão e controles negativos. O predicado de pagamento não valida identidade, não acessa sistemas e não envia dinheiro. Registros humanos presentes nas fixtures são inteiramente sintéticos.
 
-As rotas de incerteza e fora do escopo para análise manual são propostas explícitas; o pós-revisão especializada continua pendente. O fluxo não inventa retomada desse ramo.
+As rotas de incerteza e fora do escopo para análise manual são propostas explícitas; o retorno após especialista foi definido em 24/11/2026: parecer ao analista, sem retomada automática do agente (1A).
 
 ## Avaliação real futura
 
@@ -42,4 +42,4 @@ As rotas de incerteza e fora do escopo para análise manual são propostas expl�
 
 ## Aprovação dos cenários
 
-Alex revisou e aprovou individualmente INT-001 a INT-010 em 23/11/2026. Status das fixtures: `APROVADO_POR_ALEX`. Aprovação dos comportamentos esperados não representa execução bem-sucedida de agente, validação de regras reais ou aceite técnico de terceiros. O pós-revisão especializada permanece sem retomada automática definida, conforme INT-003 aprovado.
+Alex revisou e aprovou individualmente INT-001 a INT-010 em 23/11/2026. Status das fixtures: `APROVADO_POR_ALEX`. Aprovação dos comportamentos esperados não representa execução bem-sucedida de agente, validação de regras reais ou aceite técnico de terceiros. Em 24/11/2026, a decisão 1A confirmou retorno do parecer ao analista e ausência de retomada automática; INT-003 continua coerente.

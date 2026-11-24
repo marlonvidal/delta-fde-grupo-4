@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def validar_schema(value, schema, path='$'):
     # Subconjunto usado pelo schema local; palavras desconhecidas falham explicitamente.
     supported = {'$schema', '$id', 'title', 'type', 'properties', 'required',
-                 'additionalProperties', 'items', 'minItems', 'minLength', 'enum', 'const', 'anyOf'}
+                 'additionalProperties', 'items', 'minItems', 'minLength', 'minimum', 'enum', 'const', 'anyOf'}
     assert not set(schema) - supported, (path, 'palavra de schema não suportada')
     if 'anyOf' in schema:
         for alternative in schema['anyOf']:
@@ -20,10 +20,12 @@ def validar_schema(value, schema, path='$'):
             except AssertionError:
                 pass
         raise AssertionError((path, 'nenhuma alternativa válida'))
-    types = {'object': dict, 'array': list, 'string': str, 'boolean': bool, 'null': type(None)}
+    types = {'object': dict, 'array': list, 'string': str, 'boolean': bool, 'integer': int, 'null': type(None)}
     if 'type' in schema:
         allowed = schema['type'] if isinstance(schema['type'], list) else [schema['type']]
         assert any(type(value) is types[t] for t in allowed), (path, 'tipo inválido')
+    if 'minimum' in schema:
+        assert type(value) in (int, float) and value >= schema['minimum'], (path, 'valor abaixo do mínimo')
     if 'enum' in schema:
         assert value in schema['enum'], (path, 'enum inválido')
     if 'const' in schema:

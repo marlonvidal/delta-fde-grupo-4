@@ -20,8 +20,8 @@ Cenários aprovados por Alex; atualização de elegibilidade sem valor autorizad
 | FDE-014 | Um centavo abaixo do limite | COMPLETA | ANALISE_COMUM | RECOMENDAR_APROVACAO |
 | FDE-015 | Valor acima do recorte de dois mil | COMPLETA | ANALISE_COMUM | RECOMENDAR_APROVACAO |
 | FDE-016 | Dano não coberto pela regra simulada | COMPLETA | ANALISE_COMUM | REVISAO_HUMANA |
-| FDE-017 | Evento anterior à vigência | PENDENTE | COMPLEMENTACAO_DOCUMENTAL | REVISAO_HUMANA |
-| FDE-018 | Evento depois da vigência encerrada | PENDENTE | COMPLEMENTACAO_DOCUMENTAL | REVISAO_HUMANA |
+| FDE-017 | Evento anterior à vigência | PENDENTE | ANALISE_COMUM | REVISAO_HUMANA |
+| FDE-018 | Evento depois da vigência encerrada | PENDENTE | ANALISE_COMUM | REVISAO_HUMANA |
 | FDE-019 | Evento no primeiro dia de vigência | COMPLETA | ANALISE_COMUM | RECOMENDAR_APROVACAO |
 | FDE-020 | Evento no último dia de vigência | COMPLETA | ANALISE_COMUM | RECOMENDAR_APROVACAO |
 | FDE-021 | Data do evento desconhecida | INDETERMINADA | REVISAO_POR_INCERTEZA | REVISAO_HUMANA |
@@ -34,3 +34,5 @@ Cenários aprovados por Alex; atualização de elegibilidade sem valor autorizad
 | FDE-028 | Score baixo não substitui cobertura | COMPLETA | REVISAO_POR_INCERTEZA | REVISAO_HUMANA |
 | FDE-029 | Catálogo documental ausente | INDETERMINADA | REVISAO_POR_INCERTEZA | REVISAO_HUMANA |
 | FDE-030 | Cálculo de indenização reservado ao humano | COMPLETA | ANALISE_COMUM | RECOMENDAR_APROVACAO |
+
+Atualização de 24/11/2026: FDE-017/FDE-018 seguem análise comum e recomendação de revisão humana conforme decisão 2A, alinhados ao MMV-010. Demais rótulos preservados.

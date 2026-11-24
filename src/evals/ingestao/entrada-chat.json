@@ -1,0 +1,23 @@
+{
+  "versao_ingestao": "0.1.0",
+  "evento_id": "EV-CHAT-001",
+  "mensagem_id": "MSG-001",
+  "caso_id": "FDE-001",
+  "versao_entrada": 1,
+  "execucao_anterior_id": null,
+  "instante_recebimento": "2026-11-20T10:00:00-03:00",
+  "texto_mensagem": "Segue a apólice do veículo.",
+  "anexos": [
+    {
+      "anexo_id": "ANEXO-001",
+      "documento_id": "FDE-001-DOC-APOLICE",
+      "nome_original": "apolice.txt",
+      "mime_type_informado": "text/plain",
+      "mime_type_detectado": "text/plain",
+      "tamanho_bytes": 375,
+      "sha256": "ae673336f0066363f9bf7bb156373a0274d4c06966a4479f635e9aa319965270",
+      "referencia_armazenamento": "fixture://data/piloto-multimodal-v0/documentos/FDE-001/apolice.txt",
+      "recebido_em": "2026-11-20T10:00:00-03:00"
+    }
+  ]
+}

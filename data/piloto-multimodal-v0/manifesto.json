@@ -1,6 +1,6 @@
 {
   "versao": "0.1.0",
-  "status": "IMPORTADO_LANGFUSE_PENDENTE_REVISAO",
+  "status": "REVISADO_POR_ALEX",
   "casos": 5,
   "documentos": 19,
   "imagens_previstas": 4,
@@ -13,13 +13,21 @@
     "Não representa os cinco casos reais mencionados na reunião; nenhum caso real foi recebido nesta etapa.",
     "Sem estimativa de prevalência operacional ou desempenho real.",
     "Não há classificação de gravidade nem preço confiável deriváveis somente de imagem.",
-    "Quatro imagens recebidas e inspecionadas pelo assistente; revisão humana e validação dos rótulos continuam pendentes."
+    "Revisão visual e documental realizada por Alex em 24/11/2026; sem revisão independente ou resultados de agente."
   ],
-  "aprovacao_necessaria": "Importação autorizada por Alex. Revisão humana dos rótulos multimodais continua pendente antes de usar como referência validada.",
+  "aprovacao_necessaria": "Revisão de Alex registrada. Aceite técnico da integração, execução do agente e avaliação independente não demonstrados.",
   "langfuse": {
     "dataset_id": "cmwtwu27x01zgad0jyzn7uyfg",
     "dataset_name": "amparo-piloto-multimodal-v0",
     "url": "https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwtwu27x01zgad0jyzn7uyfg",
     "verificado_em": "2026-11-24T01:09:25.824052+00:00"
-  }
+  },
+  "aceite_visual_documental": {
+    "responsavel": "Alex",
+    "data": "2026-11-24",
+    "revisao_independente": false
+  },
+  "sincronizacao_aceite_langfuse": "VERIFICADA",
+  "aceite_verificado_em": "2026-11-24T23:06:38.975501+00:00",
+  "versao_gabarito": "0.1.1"
 }

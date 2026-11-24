@@ -2,7 +2,7 @@
 
 Versão: 0.2.0 · 20/11/2026 · Autor: Alex, com apoio do Codex.
 
-**Status: escopo e convenções de saída decididos por Alex; interface pronta para implementação e integração.** Estes contratos definem comportamentos e avaliações; não comprovam implementação, aprovação de regras operacionais ou prontidão para produção.
+**Status: convenções de saída decididas por Alex; interfaces de saída disponíveis. Integração com anexos/chat ainda exige normalização e aceite técnico.** Estes contratos definem comportamentos e avaliações; não comprovam implementação, aprovação de regras operacionais ou prontidão para produção.
 
 ## Escopo e decisões
 
@@ -16,7 +16,7 @@ Versão: 0.2.0 · 20/11/2026 · Autor: Alex, com apoio do Codex.
 
 **Fato da fonte:** a ontologia descreve o processo atual e distingue elementos de diagnóstico e inferidos. Fonte: [schema 0.3.0](../ontologia/amparo_core.yaml), base revisada `3d429f8`. As interfaces abaixo são propostas de avaliação, não alterações na ontologia.
 
-## Entrada comum proposta
+## Entrada normalizada de domínio proposta
 
 | Campo | Contrato |
 |---|---|
@@ -77,3 +77,11 @@ Quando não houver avaliação de domínio, campos de resultado específicos rec
 Uso em tela e integração; campos obrigatórios, objetos fechados e texto legível. Evidências por conclusão, incerteza por motivo objetivo, sem percentual de confiança. Próxima ação humana obrigatória para impedimentos. Recomendação somente de elegibilidade: `RECOMENDAR_APROVACAO` ou `REVISAO_HUMANA`; sem negativa e sem valor de indenização. A decisão sobre o valor é humana. Valores de orçamento podem ser citados como fatos, sem serem convertidos em indenização sugerida.
 
 Schemas e exemplos: [guia de integração](../guia-integracao-avaliacoes.md). Listas vazias representam ausência de itens; campos de conclusão usam `null` apenas quando permitido no schema. Erros técnicos são envelopes produzidos pelo executor; não pedir ao modelo que diagnostique sua infraestrutura. Validação estrutural não comprova correção semântica.
+
+## Complemento documental e chat — 24/11/2026
+
+O [contrato de ingestão 0.1.0 proposto](06-chat-ingestao-documental.md) recebe anexos e resultados de extração sem alterar os schemas de domínio 0.2.0. A entrada normalizada acima não é o payload bruto do chat ou dos lotes multimodais. Consultar [auditoria e pendências](../auditoria/contratos-e-cenarios.md) e [catálogo dos 15 casos](../auditoria/catalogo-15-casos.md) antes de implementar a máquina de estados.
+
+### Escopo operacional confirmado em 24/11/2026
+
+A solução analisa sinistros já abertos e obtém anexos do sistema existente. Chat/upload são interfaces de demonstração. Retorno do especialista é ao analista, sem retomada automática (1A). Evento fora da vigência segue ao parecer e revisão humana no ramo comum (2A). Status e revisão visual/documental dos casos aceitos por Alex; suporte da integração ainda depende de implementação.

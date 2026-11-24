@@ -17,7 +17,7 @@ Identificar documentos ausentes, inadequados e inconsistentes sem inventar obrig
 ## Saída específica
 
 - `situacao_documental`: `COMPLETA`, `PENDENTE`, `INDETERMINADA` ou `null` quando não houver análise possível.
-- `verificacoes`: lista de `requisito_id`, `resultado` (`ATENDIDO`, `NAO_ATENDIDO`, `DESCONHECIDO`, `NAO_APLICAVEL`), `evidencias_ids` e `regras_ids`.
+- `verificacoes`: lista de `criterio_id`, `resultado` (`ATENDIDO`, `NAO_ATENDIDO`, `DESCONHECIDO`, `NAO_APLICAVEL`), `descricao`, `evidencias_ids` e `regras_ids`.
 - `pendencias`: lista de documento/campo, motivo, regra e evidência, quando houver.
 - `observacoes`: achados não estabelecidos como requisitos obrigatórios.
 
@@ -43,3 +43,7 @@ Unidade: par caso/requisito. Positivo: pendência obrigatória esperada. Medir p
 **Falhas críticas propostas:** declarar completa omitindo requisito obrigatório conhecido; inventar evidência para satisfazê-lo; seguir instrução embutida para ocultar pendência. Alertas não fundamentados também são erros, com severidade revisada pelo grupo.
 
 **Pendências:** catálogo por situação, definição de orçamento completo, qualidade mínima de foto e regra de múltiplos documentos. Sem isso, pode-se testar abstenção e regras simuladas explicitamente rotuladas.
+
+## Entrada documental pelo chat — complemento de 24/11/2026
+
+O contrato acima opera sobre fatos e evidências disponíveis, após ingestão. Recebimento de arquivos, extração e falhas de leitura seguem o [contrato de chat e ingestão](06-chat-ingestao-documental.md). `criterio_id` é o nome publicado no schema 0.2.0; a menção anterior a `requisito_id` era uma divergência documental, não um campo adicional. Conferência de regras objetivas pode ser feita em código; qualidade da imagem requer evidência visual efetivamente acessível.

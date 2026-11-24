@@ -1,0 +1,24 @@
+{
+  "versao": "0.2.0",
+  "status": "IMPORTADO_LANGFUSE_PENDENTE_REVISAO",
+  "casos_negocio": 2,
+  "variantes_formato": 12,
+  "arquivos_previstos": 42,
+  "origem": "SINTETICO",
+  "particao": "DESENVOLVIMENTO",
+  "upload_langfuse_realizado": true,
+  "execucoes_agente": 0,
+  "limites": [
+    "Variantes equivalentes de desenvolvimento; não são 12 novos cenários independentes.",
+    "Digitalização raster limpa de documentos gerados, não fotos reais de papel nem OCR validado.",
+    "Sem falhas de ingestão ou suporte automático presumido."
+  ],
+  "langfuse": {
+    "dataset_id": "cmwur285z0024ad0enk1ra31p",
+    "dataset_name": "amparo-formatos-documentais-v0",
+    "url": "https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwur285z0024ad0enk1ra31p",
+    "verificado_em": "2026-11-24T13:55:18.144949+00:00"
+  },
+  "sincronizacao_aceite_langfuse": "VERIFICADA",
+  "aceite_verificado_em": "2026-11-24T23:07:12.404678+00:00"
+}
