@@ -1,0 +1,60 @@
+{
+  "caso_id": "FDE-004",
+  "modulo": "triagem",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "INSUFICIENTE",
+  "justificativa": "Documentação está completa segundo R-DOC; cobertura não pode ser inferida de vigência ou documentação.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [
+    {
+      "codigo": "REGRA_AUSENTE",
+      "campo": "regras.cobertura",
+      "descricao": "Regra de cobertura não foi disponibilizada.",
+      "evidencias_ids": [],
+      "regras_ids": []
+    }
+  ],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "OBTER_REGRA",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Obter condições de cobertura aplicáveis antes de concluir elegibilidade.",
+      "evidencias_ids": [],
+      "regras_ids": []
+    }
+  ],
+  "requer_decisao_humana": true,
+  "encaminhamento": "REVISAO_POR_INCERTEZA",
+  "gatilhos": [
+    {
+      "descricao": "Documentação está completa segundo R-DOC; cobertura não pode ser inferida de vigência ou documentação.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ],
+  "achados_secundarios": []
+}

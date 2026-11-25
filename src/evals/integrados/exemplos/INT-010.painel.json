@@ -1,0 +1,202 @@
+{
+  "versao_fluxo": "0.1.0",
+  "execucao_id": "RUN-INT-010",
+  "caso_id": "FDE-001",
+  "versao_entrada": "1",
+  "entrada_sha256": "bfaaf14f05b06241323e4f27fa0fe70e8aa21132143981da667ebbf04f21c2b1",
+  "execucao_anterior_id": null,
+  "gerado_em": "2026-11-20T10:00:00-03:00",
+  "rota": "FALHA_TECNICA",
+  "situacao_painel": "FALHA_TECNICA",
+  "resumo": "Operador humano confere falha antes de reprocessar; não usar conclusões parciais para aprovar.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "modulos": {
+    "documentacao": {
+      "estado": "EXECUTADO",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-001",
+        "modulo": "documentacao",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "CONCLUIDO",
+        "justificativa": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "DECIDIR_E_CALCULAR",
+            "responsavel": "ANALISTA_HUMANO",
+            "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-ORC",
+              "E-FOT",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-ESCOPO",
+              "R-DOC",
+              "R-COB",
+              "R-TRI",
+              "R-REC"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "situacao_documental": "COMPLETA",
+        "verificacoes": [
+          {
+            "criterio_id": "DOC-APOLICE",
+            "resultado": "ATENDIDO",
+            "descricao": "Apólice vinculada e evento dentro da vigência.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-FOTO",
+            "resultado": "ATENDIDO",
+            "descricao": "Metadados informam ao menos uma foto adequada; imagem não foi examinada.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-ORCAMENTO",
+            "resultado": "ATENDIDO",
+            "descricao": "Orçamento completo e vinculado; valores concordam.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-ORC"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "pendencias": [],
+        "observacoes": []
+      }
+    },
+    "triagem": {
+      "estado": "FALHA",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-001",
+        "modulo": "triagem",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "ERRO_EXECUCAO",
+        "justificativa": "Timeout sintético do executor na triagem.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "DECIDIR_E_CALCULAR",
+            "responsavel": "ANALISTA_HUMANO",
+            "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-ORC",
+              "E-FOT",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-ESCOPO",
+              "R-DOC",
+              "R-COB",
+              "R-TRI",
+              "R-REC"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "encaminhamento": null,
+        "gatilhos": [],
+        "achados_secundarios": []
+      }
+    },
+    "parecer": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "FALHA_ANTERIOR",
+      "saida": null
+    },
+    "recomendacao": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "FALHA_ANTERIOR",
+      "saida": null
+    }
+  },
+  "proxima_acao": {
+    "codigo": "CORRIGIR_E_REPROCESSAR",
+    "descricao": "Operador humano confere falha antes de reprocessar; não usar conclusões parciais para aprovar.",
+    "responsavel": "ANALISTA_HUMANO",
+    "evidencias_ids": [
+      "E-SIN",
+      "E-APO",
+      "E-ORC",
+      "E-FOT",
+      "E-CTX"
+    ],
+    "regras_ids": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-COB",
+      "R-TRI",
+      "R-REC"
+    ]
+  },
+  "requer_decisao_humana": true,
+  "decisao_humana": null,
+  "pagamento_executado_pelo_agente": false
+}

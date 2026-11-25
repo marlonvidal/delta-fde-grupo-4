@@ -1,0 +1,63 @@
+{
+  "caso_id": "FDE-002",
+  "modulo": "recomendacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "CONCLUIDO",
+  "justificativa": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "SOLICITAR_FOTO",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Solicitar ao analista providenciar foto adequada e reavaliar documentação.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "recomendacao": "REVISAO_HUMANA",
+  "decisao_executada": false,
+  "motivos": [
+    "CRITERIO_NAO_ATENDIDO"
+  ],
+  "criterios_verificados": [
+    {
+      "criterio_id": "ELEGIBILIDADE",
+      "resultado": "NAO_ATENDIDO",
+      "descricao": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ]
+}

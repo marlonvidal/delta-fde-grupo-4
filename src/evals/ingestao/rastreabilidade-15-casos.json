@@ -1,0 +1,641 @@
+[
+  {
+    "caso_id": "FDE-001",
+    "fonte_entrada": "data/piloto-multimodal-v0/entradas/FDE-001.json",
+    "fonte_gabarito": "data/piloto-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Documentos completos e foto adequada",
+    "documentos_ids": [
+      "FDE-001-DOC-APOLICE",
+      "FDE-001-DOC-AVISO",
+      "FDE-001-DOC-ORCAMENTO",
+      "FDE-001-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "FDE-001-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "FDE-001-DOC-CONDICOES",
+    "rota": "ANALISE_COMUM",
+    "executados": [
+      "documentacao",
+      "triagem",
+      "parecer",
+      "recomendacao"
+    ],
+    "nao_executados": [],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": "RECOMENDAR_APROVACAO",
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "FDE-002",
+    "fonte_entrada": "data/piloto-multimodal-v0/entradas/FDE-002.json",
+    "fonte_gabarito": "data/piloto-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Foto ausente",
+    "documentos_ids": [
+      "FDE-002-DOC-APOLICE",
+      "FDE-002-DOC-AVISO",
+      "FDE-002-DOC-ORCAMENTO",
+      "FDE-002-DOC-CONDICOES"
+    ],
+    "imagens_ids": [],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "FDE-002-DOC-CONDICOES",
+    "rota": "COMPLEMENTACAO_DOCUMENTAL",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "FDE-003",
+    "fonte_entrada": "data/piloto-multimodal-v0/entradas/FDE-003.json",
+    "fonte_gabarito": "data/piloto-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Aviso 2300.00; orçamento 1800.00",
+    "documentos_ids": [
+      "FDE-003-DOC-APOLICE",
+      "FDE-003-DOC-AVISO",
+      "FDE-003-DOC-ORCAMENTO",
+      "FDE-003-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "FDE-003-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "FDE-003-DOC-CONDICOES",
+    "rota": "REVISAO_POR_INCERTEZA",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "INSUFICIENTE",
+      "triagem": "INSUFICIENTE"
+    },
+    "status_proposto": {
+      "documentacao": "INSUFICIENTE",
+      "triagem": "INSUFICIENTE"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "INDETERMINADA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "FDE-004",
+    "fonte_entrada": "data/piloto-multimodal-v0/entradas/FDE-004.json",
+    "fonte_gabarito": "data/piloto-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Condições de cobertura ausentes",
+    "documentos_ids": [
+      "FDE-004-DOC-APOLICE",
+      "FDE-004-DOC-AVISO",
+      "FDE-004-DOC-ORCAMENTO"
+    ],
+    "imagens_ids": [
+      "FDE-004-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": null,
+    "rota": "REVISAO_POR_INCERTEZA",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "INSUFICIENTE"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "INSUFICIENTE"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "FDE-005",
+    "fonte_entrada": "data/piloto-multimodal-v0/entradas/FDE-005.json",
+    "fonte_gabarito": "data/piloto-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Valor 5000.01",
+    "documentos_ids": [
+      "FDE-005-DOC-APOLICE",
+      "FDE-005-DOC-AVISO",
+      "FDE-005-DOC-ORCAMENTO",
+      "FDE-005-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "FDE-005-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "FDE-005-DOC-CONDICOES",
+    "rota": "FORA_ESCOPO",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "FORA_ESCOPO",
+      "triagem": "FORA_ESCOPO"
+    },
+    "status_proposto": {
+      "documentacao": "FORA_ESCOPO",
+      "triagem": "FORA_ESCOPO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": null,
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-006",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-006.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Valor 5000.00, inclusivo",
+    "documentos_ids": [
+      "MMV-006-DOC-APOLICE",
+      "MMV-006-DOC-AVISO",
+      "MMV-006-DOC-ORCAMENTO",
+      "MMV-006-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-006-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-006-DOC-CONDICOES",
+    "rota": "ANALISE_COMUM",
+    "executados": [
+      "documentacao",
+      "triagem",
+      "parecer",
+      "recomendacao"
+    ],
+    "nao_executados": [],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": "RECOMENDAR_APROVACAO",
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-007",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-007.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Valor 4999.99",
+    "documentos_ids": [
+      "MMV-007-DOC-APOLICE",
+      "MMV-007-DOC-AVISO",
+      "MMV-007-DOC-ORCAMENTO",
+      "MMV-007-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-007-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-007-DOC-CONDICOES",
+    "rota": "ANALISE_COMUM",
+    "executados": [
+      "documentacao",
+      "triagem",
+      "parecer",
+      "recomendacao"
+    ],
+    "nao_executados": [],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": "RECOMENDAR_APROVACAO",
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-008",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-008.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Orçamento ausente",
+    "documentos_ids": [
+      "MMV-008-DOC-APOLICE",
+      "MMV-008-DOC-AVISO",
+      "MMV-008-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-008-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-008-DOC-CONDICOES",
+    "rota": "COMPLEMENTACAO_DOCUMENTAL",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-009",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-009.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Orçamento incompleto",
+    "documentos_ids": [
+      "MMV-009-DOC-APOLICE",
+      "MMV-009-DOC-AVISO",
+      "MMV-009-DOC-ORCAMENTO",
+      "MMV-009-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-009-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-009-DOC-CONDICOES",
+    "rota": "COMPLEMENTACAO_DOCUMENTAL",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-010",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-010.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Evento após fim de vigência",
+    "documentos_ids": [
+      "MMV-010-DOC-APOLICE",
+      "MMV-010-DOC-AVISO",
+      "MMV-010-DOC-ORCAMENTO",
+      "MMV-010-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-010-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-010-DOC-CONDICOES",
+    "rota": "ANALISE_COMUM",
+    "executados": [
+      "documentacao",
+      "triagem",
+      "parecer",
+      "recomendacao"
+    ],
+    "nao_executados": [],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": "REVISAO_HUMANA",
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-011",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-011.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Evento no primeiro dia da vigência",
+    "documentos_ids": [
+      "MMV-011-DOC-APOLICE",
+      "MMV-011-DOC-AVISO",
+      "MMV-011-DOC-ORCAMENTO",
+      "MMV-011-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-011-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-011-DOC-CONDICOES",
+    "rota": "ANALISE_COMUM",
+    "executados": [
+      "documentacao",
+      "triagem",
+      "parecer",
+      "recomendacao"
+    ],
+    "nao_executados": [],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO",
+      "parecer": "CONCLUIDO",
+      "recomendacao": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": "RECOMENDAR_APROVACAO",
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-012",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-012.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Foto desfocada",
+    "documentos_ids": [
+      "MMV-012-DOC-APOLICE",
+      "MMV-012-DOC-AVISO",
+      "MMV-012-DOC-ORCAMENTO",
+      "MMV-012-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-012-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-012-DOC-CONDICOES",
+    "rota": "COMPLEMENTACAO_DOCUMENTAL",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-013",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-013.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Foto subexposta",
+    "documentos_ids": [
+      "MMV-013-DOC-APOLICE",
+      "MMV-013-DOC-AVISO",
+      "MMV-013-DOC-ORCAMENTO",
+      "MMV-013-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-013-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-013-DOC-CONDICOES",
+    "rota": "COMPLEMENTACAO_DOCUMENTAL",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-014",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-014.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Sinalização humana de suspeita",
+    "documentos_ids": [
+      "MMV-014-DOC-APOLICE",
+      "MMV-014-DOC-AVISO",
+      "MMV-014-DOC-ORCAMENTO",
+      "MMV-014-DOC-CONDICOES"
+    ],
+    "imagens_ids": [
+      "MMV-014-IMG-01"
+    ],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-014-DOC-CONDICOES",
+    "rota": "REVISAO_ESPECIALIZADA",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "status_proposto": {
+      "documentacao": "CONCLUIDO",
+      "triagem": "CONCLUIDO"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "COMPLETA",
+    "pendencias": []
+  },
+  {
+    "caso_id": "MMV-015",
+    "fonte_entrada": "data/ampliacao-multimodal-v0/entradas/MMV-015.json",
+    "fonte_gabarito": "data/ampliacao-multimodal-v0/avaliador/verdade.jsonl",
+    "condicao": "Conflito de valor e foto ausente",
+    "documentos_ids": [
+      "MMV-015-DOC-APOLICE",
+      "MMV-015-DOC-AVISO",
+      "MMV-015-DOC-ORCAMENTO",
+      "MMV-015-DOC-CONDICOES"
+    ],
+    "imagens_ids": [],
+    "regras_operacionais": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-TRI",
+      "R-REC"
+    ],
+    "fonte_cobertura": "MMV-015-DOC-CONDICOES",
+    "rota": "REVISAO_POR_INCERTEZA",
+    "executados": [
+      "documentacao",
+      "triagem"
+    ],
+    "nao_executados": [
+      "parecer",
+      "recomendacao"
+    ],
+    "status_gabarito": {
+      "documentacao": "INSUFICIENTE",
+      "triagem": "INSUFICIENTE"
+    },
+    "status_proposto": {
+      "documentacao": "INSUFICIENTE",
+      "triagem": "INSUFICIENTE"
+    },
+    "recomendacao_fluxo": null,
+    "situacao_documental": "PENDENTE",
+    "pendencias": []
+  }
+]

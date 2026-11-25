@@ -1,0 +1,10 @@
+DOCUMENTO SINTÉTICO — EXCLUSIVO PARA TESTE
+Sinistro: SIN-001
+Apólice vinculada: AP-001
+Veículo: VEI-001
+Data do evento declarada: 2026-11-18
+Data do aviso: 2026-11-19T10:00:00-03:00
+Valor orçado consolidado no aviso (BRL): 5000.01
+Relato: foi observado dano no veículo. A evidência visual, quando recebida, está no inventário de imagens do caso.
+Histórico de sinistros nos últimos 12 meses: não disponibilizado.
+Sinalização humana de suspeita de fraude: não.

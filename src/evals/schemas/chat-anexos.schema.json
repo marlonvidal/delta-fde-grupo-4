@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "versao_ingestao",
+    "evento_id",
+    "mensagem_id",
+    "caso_id",
+    "versao_entrada",
+    "execucao_anterior_id",
+    "instante_recebimento",
+    "texto_mensagem",
+    "anexos"
+  ],
+  "properties": {
+    "versao_ingestao": {
+      "const": "0.1.0"
+    },
+    "evento_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mensagem_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versao_entrada": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "execucao_anterior_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instante_recebimento": {
+      "type": "string",
+      "minLength": 1
+    },
+    "texto_mensagem": {
+      "type": "string"
+    },
+    "anexos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "anexo_id",
+          "documento_id",
+          "nome_original",
+          "mime_type_informado",
+          "mime_type_detectado",
+          "tamanho_bytes",
+          "sha256",
+          "referencia_armazenamento",
+          "recebido_em"
+        ],
+        "properties": {
+          "anexo_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "documento_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nome_original": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mime_type_informado": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mime_type_detectado": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tamanho_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "minLength": 1
+          },
+          "referencia_armazenamento": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recebido_em": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Entrada de anexos pelo chat - proposta 0.1.0"
+}

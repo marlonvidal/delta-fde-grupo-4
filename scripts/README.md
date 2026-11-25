@@ -228,3 +228,9 @@ dicionário `ACOES` no início de `gerar_er.py`.
 | `aviso: Classe.slot sem range de classe; ignorado` | O slot tem `link_type`, mas o `range` não aponta para uma classe do schema. Corrija o `range`. |
 | `ValueError: cardinalidade desconhecida` | `cardinalidade` fora de `N:1`, `1:N`, `1:1`, `N:N`. Use aspas no YAML (`"N:1"`). |
 | Diagrama não renderiza no GitHub/mermaid.live com `layout: elk` | Alguns renderizadores não suportam ELK. Gere com `--layout dagre`. |
+
+## Auditoria dos contratos documentais
+
+`python3 scripts/validar_contratos_documentais.py`
+
+Confere os schemas propostos de recebimento/ingestão, os exemplos, estados e 14 controles negativos, além da matriz derivada dos 15 casos multimodais. Não extrai documentos nem executa LangGraph ou Langfuse. O validador de schemas local agora também verifica inteiros e valor mínimo, rejeitando booleanos como tamanho/versão.

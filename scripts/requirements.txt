@@ -1,2 +1,5 @@
 linkml
 pyyaml
+
+# Verificação de PDFs das fixtures documentais
+pypdf>=5,<7

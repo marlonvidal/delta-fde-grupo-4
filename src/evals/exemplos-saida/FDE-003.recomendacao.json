@@ -1,0 +1,77 @@
+{
+  "caso_id": "FDE-003",
+  "modulo": "recomendacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "INSUFICIENTE",
+  "justificativa": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [
+    {
+      "codigo": "CONFLITO",
+      "campo": "sinistro.valor_orcado",
+      "descricao": "Sinistro informa 2300.00 BRL e orçamento informa 1800.00 BRL.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "proximas_acoes": [
+    {
+      "codigo": "CONFERIR_VALORES",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Conferir os valores de sinistro e orçamento e corrigir a fonte divergente.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "recomendacao": "REVISAO_HUMANA",
+  "decisao_executada": false,
+  "motivos": [
+    "CONFLITO"
+  ],
+  "criterios_verificados": [
+    {
+      "criterio_id": "ELEGIBILIDADE",
+      "resultado": "DESCONHECIDO",
+      "descricao": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ]
+}

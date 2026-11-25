@@ -1,0 +1,90 @@
+{
+  "caso_id": "FDE-002",
+  "modulo": "documentacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "CONCLUIDO",
+  "justificativa": "Cobertura simulada pode ser sustentada, mas ausência documental impede recomendar aprovação.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "SOLICITAR_FOTO",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Solicitar ao analista providenciar foto adequada e reavaliar documentação.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "situacao_documental": "PENDENTE",
+  "verificacoes": [
+    {
+      "criterio_id": "DOC-APOLICE",
+      "resultado": "ATENDIDO",
+      "descricao": "Apólice vinculada e evento dentro da vigência.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-FOTO",
+      "resultado": "NAO_ATENDIDO",
+      "descricao": "Foto obrigatória ausente.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-ORCAMENTO",
+      "resultado": "ATENDIDO",
+      "descricao": "Orçamento completo e vinculado; valores concordam.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "pendencias": [
+    {
+      "codigo": "CRITERIO_NAO_ATENDIDO",
+      "campo": "fotos",
+      "descricao": "Inventário confirma ausência da foto exigida.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "observacoes": []
+}

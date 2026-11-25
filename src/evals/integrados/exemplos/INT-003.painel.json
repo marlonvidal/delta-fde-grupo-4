@@ -1,0 +1,204 @@
+{
+  "versao_fluxo": "0.1.0",
+  "execucao_id": "RUN-INT-003",
+  "caso_id": "FDE-011",
+  "versao_entrada": "1",
+  "entrada_sha256": "e8eba7debf2965fffa0d1c1fd5527fa621c59c0ff9fe6cf01af880982dc49700",
+  "execucao_anterior_id": null,
+  "gerado_em": "2026-11-20T10:00:00-03:00",
+  "rota": "REVISAO_ESPECIALIZADA",
+  "situacao_painel": "AGUARDANDO_ENCAMINHAMENTO_ESPECIALISTA",
+  "resumo": "Analista encaminha ao especialista. Resultado posterior e retomada dependem de regra ainda pendente.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "modulos": {
+    "documentacao": {
+      "estado": "EXECUTADO",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-011",
+        "modulo": "documentacao",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "CONCLUIDO",
+        "justificativa": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "DECIDIR_E_CALCULAR",
+            "responsavel": "ANALISTA_HUMANO",
+            "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-ORC",
+              "E-FOT",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-ESCOPO",
+              "R-DOC",
+              "R-COB",
+              "R-TRI",
+              "R-REC"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "situacao_documental": "COMPLETA",
+        "verificacoes": [
+          {
+            "criterio_id": "DOC-APOLICE",
+            "resultado": "ATENDIDO",
+            "descricao": "Apólice vinculada e evento dentro da vigência.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-APO",
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-FOTO",
+            "resultado": "ATENDIDO",
+            "descricao": "Metadados informam ao menos uma foto adequada; imagem não foi examinada.",
+            "evidencias_ids": [
+              "E-FOT"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          },
+          {
+            "criterio_id": "DOC-ORCAMENTO",
+            "resultado": "ATENDIDO",
+            "descricao": "Orçamento completo e vinculado; valores concordam.",
+            "evidencias_ids": [
+              "E-SIN",
+              "E-ORC"
+            ],
+            "regras_ids": [
+              "R-DOC"
+            ]
+          }
+        ],
+        "pendencias": [],
+        "observacoes": []
+      }
+    },
+    "triagem": {
+      "estado": "EXECUTADO",
+      "motivo_nao_execucao": null,
+      "saida": {
+        "caso_id": "FDE-011",
+        "modulo": "triagem",
+        "versao_contrato": "0.2.0",
+        "status_execucao": "CONCLUIDO",
+        "justificativa": "Sinalização humana de suspeita exige revisão especializada, sem afirmar fraude comprovada.",
+        "evidencias_ids": [
+          "E-SIN",
+          "E-APO",
+          "E-ORC",
+          "E-FOT",
+          "E-CTX"
+        ],
+        "regras_ids": [
+          "R-ESCOPO",
+          "R-DOC",
+          "R-COB",
+          "R-TRI",
+          "R-REC"
+        ],
+        "lacunas": [],
+        "conflitos": [],
+        "proximas_acoes": [
+          {
+            "codigo": "ENCAMINHAR_ESPECIALISTA",
+            "descricao": "Solicitar encaminhamento humano ao especialista.",
+            "responsavel": "ANALISTA_HUMANO",
+            "evidencias_ids": [
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-TRI"
+            ]
+          }
+        ],
+        "requer_decisao_humana": true,
+        "encaminhamento": "REVISAO_ESPECIALIZADA",
+        "gatilhos": [
+          {
+            "descricao": "Sinalização humana de suspeita exige revisão especializada, sem afirmar fraude comprovada.",
+            "evidencias_ids": [
+              "E-CTX"
+            ],
+            "regras_ids": [
+              "R-TRI"
+            ]
+          }
+        ],
+        "achados_secundarios": []
+      }
+    },
+    "parecer": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "DESVIO_DE_ROTA",
+      "saida": null
+    },
+    "recomendacao": {
+      "estado": "NAO_EXECUTADO",
+      "motivo_nao_execucao": "DESVIO_DE_ROTA",
+      "saida": null
+    }
+  },
+  "proxima_acao": {
+    "codigo": "ENCAMINHAR_ESPECIALISTA",
+    "descricao": "Analista encaminha ao especialista. Resultado posterior e retomada dependem de regra ainda pendente.",
+    "responsavel": "ANALISTA_HUMANO",
+    "evidencias_ids": [
+      "E-SIN",
+      "E-APO",
+      "E-ORC",
+      "E-FOT",
+      "E-CTX"
+    ],
+    "regras_ids": [
+      "R-ESCOPO",
+      "R-DOC",
+      "R-COB",
+      "R-TRI",
+      "R-REC"
+    ]
+  },
+  "requer_decisao_humana": true,
+  "decisao_humana": null,
+  "pagamento_executado_pelo_agente": false
+}

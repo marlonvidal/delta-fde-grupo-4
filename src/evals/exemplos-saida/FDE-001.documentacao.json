@@ -1,0 +1,86 @@
+{
+  "caso_id": "FDE-001",
+  "modulo": "documentacao",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "CONCLUIDO",
+  "justificativa": "Critérios simulados de elegibilidade atendidos. Recomendar aprovação sem calcular indenização e sem executar decisão.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [],
+  "proximas_acoes": [
+    {
+      "codigo": "DECIDIR_E_CALCULAR",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Analista deve confirmar a elegibilidade e calcular eventual indenização; nenhuma decisão foi executada.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "situacao_documental": "COMPLETA",
+  "verificacoes": [
+    {
+      "criterio_id": "DOC-APOLICE",
+      "resultado": "ATENDIDO",
+      "descricao": "Apólice vinculada e evento dentro da vigência.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-FOTO",
+      "resultado": "ATENDIDO",
+      "descricao": "Metadados informam ao menos uma foto adequada; imagem não foi examinada.",
+      "evidencias_ids": [
+        "E-FOT"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    },
+    {
+      "criterio_id": "DOC-ORCAMENTO",
+      "resultado": "ATENDIDO",
+      "descricao": "Orçamento completo e vinculado; valores concordam.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "pendencias": [],
+  "observacoes": []
+}

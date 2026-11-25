@@ -1,0 +1,114 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "versao_ingestao",
+    "evento_id",
+    "caso_id",
+    "versao_entrada",
+    "processado_em",
+    "anexos"
+  ],
+  "properties": {
+    "versao_ingestao": {
+      "const": "0.1.0"
+    },
+    "evento_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "caso_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versao_entrada": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "processado_em": {
+      "type": "string",
+      "minLength": 1
+    },
+    "anexos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "anexo_id",
+          "status_processamento",
+          "texto_extraido",
+          "campos_extraidos",
+          "evidencias",
+          "erro_codigo",
+          "motivo"
+        ],
+        "properties": {
+          "anexo_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status_processamento": {
+            "enum": [
+              "PROCESSADO",
+              "ILEGIVEL",
+              "NAO_SUPORTADO",
+              "PROTEGIDO",
+              "CORROMPIDO",
+              "FALHA_TECNICA"
+            ]
+          },
+          "texto_extraido": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "campos_extraidos": {
+            "type": "object"
+          },
+          "evidencias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "localizador",
+                "trecho"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "localizador": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "trecho": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "erro_codigo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "motivo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resultado de ingestão documental - proposta 0.1.0"
+}

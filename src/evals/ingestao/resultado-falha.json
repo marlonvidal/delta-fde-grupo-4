@@ -1,0 +1,18 @@
+{
+  "versao_ingestao": "0.1.0",
+  "evento_id": "EV-CHAT-001",
+  "caso_id": "FDE-001",
+  "versao_entrada": 1,
+  "processado_em": "2026-11-20T10:00:00-03:00",
+  "anexos": [
+    {
+      "anexo_id": "ANEXO-001",
+      "status_processamento": "FALHA_TECNICA",
+      "texto_extraido": null,
+      "campos_extraidos": {},
+      "evidencias": [],
+      "erro_codigo": "TIMEOUT_EXTRACAO",
+      "motivo": "Extrator não concluiu dentro do limite de tempo."
+    }
+  ]
+}

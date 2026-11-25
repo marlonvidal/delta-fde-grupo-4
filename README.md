@@ -73,7 +73,7 @@ Comando:
 
 Diagrama ER da ontologia: `python scripts/gerar_er.py` (setup em `scripts/README.md`).
 
-Dado de exemplo: `data/amostra-sintetica.csv` (cabeçalho apenas). Casos de eval: `src/evals/casos.jsonl` (vazio).
+Dado de exemplo: `data/amostra-sintetica.csv` (cabeçalho apenas). Casos individuais: `src/evals/casos.jsonl` (30 cenários de desenvolvimento). Lotes documentais: `data/piloto-multimodal-v0/` e `data/ampliacao-multimodal-v0/` (15 cenários); variantes de formato: `data/formatos-documentais-v0/` (12 variantes de dois casos).
 
 ## 7. Falhas conhecidas e limites
 
@@ -110,3 +110,7 @@ Quem opera depois deste projeto:
 | 4 · Painel de evals | `docs/04-painel-de-evals.md` | |
 | 5 · Relatório de impacto | `docs/05-relatorio-de-impacto.md` | |
 | 6 · Case | `docs/06-case.pdf` | |
+
+## Especificação para integração documental
+
+[Guia de integração](docs/guia-integracao-avaliacoes.md), [catálogo dos 15 casos](docs/auditoria/catalogo-15-casos.md) e [auditoria dos contratos](docs/auditoria/contratos-e-cenarios.md). O recebimento de anexos pelo chat tem [contrato proposto de ingestão](docs/contratos/06-chat-ingestao-documental.md). Implementação do agente, suporte aos formatos e políticas de retorno humano ainda exigem integração/aceite.

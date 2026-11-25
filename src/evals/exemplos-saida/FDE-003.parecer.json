@@ -1,0 +1,113 @@
+{
+  "caso_id": "FDE-003",
+  "modulo": "parecer",
+  "versao_contrato": "0.2.0",
+  "status_execucao": "INSUFICIENTE",
+  "justificativa": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+  "evidencias_ids": [
+    "E-SIN",
+    "E-APO",
+    "E-ORC",
+    "E-FOT",
+    "E-CTX"
+  ],
+  "regras_ids": [
+    "R-ESCOPO",
+    "R-DOC",
+    "R-COB",
+    "R-TRI",
+    "R-REC"
+  ],
+  "lacunas": [],
+  "conflitos": [
+    {
+      "codigo": "CONFLITO",
+      "campo": "sinistro.valor_orcado",
+      "descricao": "Sinistro informa 2300.00 BRL e orçamento informa 1800.00 BRL.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "proximas_acoes": [
+    {
+      "codigo": "CONFERIR_VALORES",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Conferir os valores de sinistro e orçamento e corrigir a fonte divergente.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "requer_decisao_humana": true,
+  "analise_cobertura": "SUSTENTADA_PELAS_REGRAS_FORNECIDAS",
+  "resumo": "Sinistro sintético de vidro, evento em 18/11/2026, apólice com vigência de 01/01 a 31/12/2026.",
+  "afirmacoes": [
+    {
+      "texto": "O tipo de dano informado é VIDRO.",
+      "tipo": "FATO",
+      "evidencias_ids": [
+        "E-SIN"
+      ],
+      "regras_ids": [],
+      "formula": null
+    },
+    {
+      "texto": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+      "tipo": "INFERENCIA",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-APO",
+        "E-ORC",
+        "E-FOT",
+        "E-CTX"
+      ],
+      "regras_ids": [
+        "R-ESCOPO",
+        "R-DOC",
+        "R-COB",
+        "R-TRI",
+        "R-REC"
+      ],
+      "formula": null
+    }
+  ],
+  "inconsistencias": [
+    {
+      "codigo": "CONFLITO",
+      "campo": "sinistro.valor_orcado",
+      "descricao": "Sinistro informa 2300.00 BRL e orçamento informa 1800.00 BRL.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ],
+  "limitacoes": [],
+  "conclusao": "Orçamento de 1800 e valor consolidado de 2300 divergem; cobertura não depende do valor exato, mas conclusão financeira fica limitada.",
+  "verificacoes_humanas": [
+    {
+      "codigo": "CONFERIR_VALORES",
+      "responsavel": "ANALISTA_HUMANO",
+      "descricao": "Conferir os valores de sinistro e orçamento e corrigir a fonte divergente.",
+      "evidencias_ids": [
+        "E-SIN",
+        "E-ORC"
+      ],
+      "regras_ids": [
+        "R-DOC"
+      ]
+    }
+  ]
+}

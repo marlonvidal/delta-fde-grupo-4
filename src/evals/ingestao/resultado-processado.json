@@ -1,0 +1,26 @@
+{
+  "versao_ingestao": "0.1.0",
+  "evento_id": "EV-CHAT-001",
+  "caso_id": "FDE-001",
+  "versao_entrada": 1,
+  "processado_em": "2026-11-20T10:00:00-03:00",
+  "anexos": [
+    {
+      "anexo_id": "ANEXO-001",
+      "status_processamento": "PROCESSADO",
+      "texto_extraido": "DOCUMENTO SINTÉTICO — EXCLUSIVO PARA TESTE, SEM VALIDADE CONTRATUAL\nApólice: AP-001\nTitular: SEG-001 (identificador fictício)\nVeículo: VEI-001 (identificador fictício)\nVigência inicial: 2026-01-01\nVigência final: 2026-12-31\nSituação informada: VIGENTE\nCondições de cobertura não estão descritas neste extrato. Quando fornecidas, constam em documento separado.\n",
+      "campos_extraidos": {
+        "apolice_id": "AP-001"
+      },
+      "evidencias": [
+        {
+          "id": "FDE-001-DOC-APOLICE-P1",
+          "localizador": "paragrafo:2",
+          "trecho": "Apólice: AP-001"
+        }
+      ],
+      "erro_codigo": null,
+      "motivo": null
+    }
+  ]
+}

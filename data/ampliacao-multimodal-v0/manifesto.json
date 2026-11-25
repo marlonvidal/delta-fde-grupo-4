@@ -1,0 +1,36 @@
+{
+  "versao": "0.2.0",
+  "origem": "SINTETICO",
+  "status": "REVISADO_POR_ALEX",
+  "casos": 10,
+  "documentos": 39,
+  "imagens_previstas": 9,
+  "imagens_presentes": 9,
+  "upload_langfuse_realizado": true,
+  "chamadas_modelo_avaliado": 0,
+  "particao": "DESENVOLVIMENTO",
+  "limitacoes": [
+    "Distribuição para cobertura, não prevalência operacional.",
+    "Revisão visual e documental realizada por Alex em 24/11/2026; sem revisão independente ou resultados de agente."
+  ],
+  "langfuse": {
+    "dataset_id": "cmwtzx5gf03ewad0jsmxbeqd9",
+    "dataset_name": "amparo-ampliacao-multimodal-v0",
+    "url": "https://us.cloud.langfuse.com/project/cmwtuztw500wjad0d8k6znpmu/datasets/cmwtzx5gf03ewad0jsmxbeqd9",
+    "verificado_em": "2026-11-24T01:09:25.824052+00:00"
+  },
+  "versao_gabarito": "0.2.2",
+  "aceite_status_execucao": {
+    "responsavel": "Alex",
+    "data": "2026-11-24"
+  },
+  "sincronizacao_gabarito_langfuse": "VERIFICADA",
+  "gabarito_verificado_em": "2026-11-24T22:25:02.929664+00:00",
+  "aceite_visual_documental": {
+    "responsavel": "Alex",
+    "data": "2026-11-24",
+    "revisao_independente": false
+  },
+  "sincronizacao_aceite_langfuse": "VERIFICADA",
+  "aceite_verificado_em": "2026-11-24T23:06:53.928187+00:00"
+}

@@ -1,0 +1,7 @@
+# Document and image fixtures must retain their original bytes.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.docx binary
+*.xlsx binary
